@@ -1,9 +1,9 @@
 ---
 # Display name
-title: Wang Haocheng
+title: 王浩丞 (Wang Haocheng)
 
-# Name pronunciation (optional)
-name_pronunciation: Wang Haocheng
+# # Name pronunciation (optional)
+# name_pronunciation: Wang Haocheng
 
 # Full name (for SEO)
 first_name: Haocheng
@@ -20,7 +20,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Scientific Assistant & PhD Candidate
+role: Scientific Assistant @ETH Zürich | Incoming PhD @HKUST(GZ)
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
@@ -195,3 +195,37 @@ With extensive research experience at leading AI companies including DeepSeek AI
 Currently at ETH Zürich, I'm developing multi-LLM agent systems for autoformalization and formal reasoning in theoretical computer science, while also serving as a teaching assistant for courses on formalizing analysis of algorithms. My work represents a significant contribution to the emerging field of AI-assisted mathematical research and formal verification.
 
 I'm passionate about making mathematical reasoning more accessible through AI and am actively involved in the formal theorem proving community, contributing to projects like Mathlib4 and developing new benchmarks for evaluating mathematical reasoning in AI systems.
+
+
+<style>
+.avatar {
+  width: 200px !important;
+  height: auto !important;
+  max-height: 250px !important;
+  border-radius: 15px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+}
+
+.avatar:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+.resume-biography-3 .avatar-container img {
+  width: 200px !important;
+  height: auto !important;
+  max-height: 250px !important;
+  min-width: unset !important;
+  min-height: unset !important;
+}
+
+@media (max-width: 768px) {
+  .avatar, .resume-biography-3 .avatar-container img {
+    width: 130px !important;
+    max-height: 160px !important;
+  }
+}
+</style>

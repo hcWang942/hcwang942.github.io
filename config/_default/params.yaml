@@ -14,7 +14,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'Wang Haocheng - PhD Student in Data Science and Analytics focusing on Formal Theorem Proving, LLMs, and Mathematical Reasoning'
+    description: '王浩丞 (Wang Haocheng) - Scientific Assistant at ETH Zürich focusing on Formal Theorem Proving, LLMs, and Mathematical Reasoning'
     twitter: ''
   analytics:
     google_analytics: ''
@@ -35,12 +35,12 @@ header:
     show_search: true
     show_theme_chooser: true
     logo:
-      text: "Wang Haocheng"
+      text: "王浩丞"
 
 # Site footer
 footer:
   copyright:
-    notice: '© {year} Wang Haocheng. All rights reserved.'
+    notice: '© {year} 王浩丞 (Wang Haocheng). All rights reserved.'
     license:
       enable: false
       allow_derivatives: false
