@@ -198,24 +198,55 @@ I'm passionate about making mathematical reasoning more accessible through AI an
 
 
 <style>
+/* 统一的头像样式 - 更大更协调 */
 .avatar, .avatar img, 
 .resume-biography-3 .avatar, 
 .resume-biography-3 .avatar img,
 .resume-biography-3 .avatar-container img {
-  width: 200px !important;
+  width: 280px !important;           /* 增大到280px */
   height: auto !important;
-  max-height: 280px !important;
-  border-radius: 12px !important; 
+  max-height: 350px !important;      /* 相应增加最大高度 */
+  border-radius: 12px !important;    /* 适中的圆角 */
   object-fit: cover !important;
   object-position: center top !important;
   min-width: unset !important;
   min-height: unset !important;
-  aspect-ratio: unset !important; 
+  aspect-ratio: unset !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important; /* 添加阴影效果 */
+  transition: transform 0.3s ease !important;
 }
 
+/* 头像悬停效果 */
+.avatar:hover {
+  transform: translateY(-5px) !important;
+}
+
+/* 确保容器不限制头像大小 */
 .resume-biography-3 .avatar-container {
   width: auto !important;
   height: auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* 调整布局让头像和文字更协调 */
+.resume-biography-3 .row {
+  align-items: center !important;
+  gap: 4rem !important; /* 增加间距 */
+}
+
+/* 移动端适配 */
+@media (max-width: 992px) {
+  .avatar, .avatar img, 
+  .resume-biography-3 .avatar, 
+  .resume-biography-3 .avatar img,
+  .resume-biography-3 .avatar-container img {
+    width: 220px !important;
+    max-height: 280px !important;
+  }
+  
+  .resume-biography-3 .row {
+    gap: 3rem !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -223,8 +254,13 @@ I'm passionate about making mathematical reasoning more accessible through AI an
   .resume-biography-3 .avatar, 
   .resume-biography-3 .avatar img,
   .resume-biography-3 .avatar-container img {
-    width: 140px !important;
-    max-height: 180px !important;
+    width: 180px !important;
+    max-height: 220px !important;
+  }
+  
+  .resume-biography-3 .row {
+    gap: 2rem !important;
+    text-align: center !important;
   }
 }
 </style>
