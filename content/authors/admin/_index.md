@@ -20,18 +20,19 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: PhD Student in Data Science and Analytics
+role: Scientific Assistant & PhD Candidate
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
+  - name: ETH Zürich
+    url: https://ethz.ch/
   - name: Hong Kong University of Science and Technology (Guangzhou)
     url: https://hkust-gz.edu.cn/
 
 # Social network links
-# Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'mailto:hcwang942@gmail.com'
+    url: 'mailto:haocheng.wang@inf.ethz.ch'
     label: Email Me
   - icon: brands/github
     url: https://github.com/hcWang942
@@ -40,10 +41,11 @@ profiles:
 
 interests:
   - Formal Theorem Proving
-  - Agent Building
+  - Large Language Models for Mathematical Reasoning
   - Reinforcement Learning
-  - Large Language Models
-  - Mathematical Reasoning
+  - Multi-Agent Systems
+  - Automated Theorem Proving
+  - Game Theory Formalization
 
 education:
   - area: PhD in Data Science and Analytics
@@ -60,17 +62,23 @@ education:
       GPA: 3.26/4.00
       
       Relevant Modules:
-      - Mathematical Analysis
-      - Complex Analysis
-      - Linear Algebra
-      - Abstract Algebra
-      - Mathematical Theory of Games
-      - Mathematical Graphics
-      - ODE, Financial Mathematics
-      - Python, C++
-      - Statistics, Stochastic Process, Time Series
+      - Mathematical Analysis, Complex Analysis, Linear Algebra
+      - Abstract Algebra, Mathematical Theory of Games
+      - ODE, Financial Mathematics, Statistics
+      - Stochastic Process, Time Series
+      - Programming: Python, C++, R, MATLAB
 
 work:
+  - position: Scientific Assistant I - D-INFK
+    company_name: ETH Zürich
+    company_url: 'https://ethz.ch/'
+    company_logo: ''
+    date_start: 2025-08-01
+    date_end: ''
+    summary: |
+      - Developing Multi-LLM Agent systems for autoformalization and formal reasoning in Theoretical Computer Science
+      - Teaching Assistant for course "263-4512-00L Formalizing Analysis of Algorithms"
+      - Working under supervision of Prof. Rasmus Kyng
   - position: LLM & RL Research Intern
     company_name: ByteDance Seed, ByteDance Co., Ltd.
     company_url: ''
@@ -80,8 +88,8 @@ work:
     summary: |
       - Developing LLMs for formal mathematical reasoning through Supervised Fine-Tuning approaches
       - Built a Scoring & Self-refinement agent pipeline for Natural Language Proof
-      - Proposed an innovative sketch-incorporated long Chain-of-Thought formal reasoning method
-      - Conducted quality reviews of mathematical reasoning benchmarks including minif2f, FIMO, and Putnam
+      - Proposed innovative sketch-incorporated long Chain-of-Thought formal reasoning method
+      - Conducted quality reviews of mathematical reasoning benchmarks (miniF2F, FIMO, Putnam)
   - position: AGI Research Assistant
     company_name: DeepSeek AI Co., Ltd.
     company_url: ''
@@ -89,10 +97,10 @@ work:
     date_start: 2024-06-01
     date_end: 2024-09-30
     summary: |
-      - Built a Multimodal agent *LeanAgent* for Lean 4 autoformalization tasks
-      - Developed *ProverBench*, a domain-categorized benchmark for evaluating LLMs in automatic theorem proving
-      - Manually annotated Lean 4 code as demonstration data
-      - Contributed to multiple research papers including DeepSeek-Prover-V1.5 and DeepSeek-Prover-V2
+      - Built **LeanAgent**: Multimodal agent for Lean 4 autoformalization tasks
+      - Developed **ProverBench**: Domain-categorized benchmark for evaluating LLMs (325 problems)
+      - Manually annotated Lean 4 demonstration data from MINIF2F, FIMO, and IMO problems
+      - Contributed to DeepSeek-Prover-V1.5 & V2 achieving SOTA results on mathematical reasoning benchmarks
   - position: Research Assistant
     company_name: Huabao Securities Co., Ltd.
     company_url: ''
@@ -100,68 +108,58 @@ work:
     date_start: 2024-01-01
     date_end: 2024-04-30
     summary: |
-      - Developed a Quantitative Fund Selection and Back-testing System using Python
-      - Implemented nine regression models for quantitative position estimation
+      - Developed Quantitative Fund Selection and Back-testing System using Python
+      - Implemented nine regression models (WLS, OLS, LASSO, Ridge) for quantitative position estimation
       - Analyzed portfolio rebalancing and trend analyses through quantitative strategies
-  - position: Product Manager
-    company_name: Wind Information Co., Ltd.
-    company_url: ''
-    company_logo: ''
-    date_start: 2023-08-01
-    date_end: 2023-09-30
-    summary: |
-      - Utilized WindEDB to perform statistical analysis and visualization of A-share listed companies
-      - Designed and proposed *Wind Mobile* interface and optimized UI/UX interaction
-      - Conducted competitive analysis of financial data products
 
 # Skills
-# Add your own SVG icons to `assets/media/icons/`
 skills:
-  - name: Technical Skills
+  - name: Programming & Tools
     items:
-      - name: LEAN4
-        description: ''
-        percent: 90
+      - name: Lean4
+        description: 'Formal theorem proving'
+        percent: 95
         icon: code-bracket
       - name: Python
-        description: ''
+        description: 'ML and data science'
+        percent: 90
+        icon: code-bracket
+      - name: R & MATLAB
+        description: 'Statistical analysis'
         percent: 85
-        icon: code-bracket
-      - name: C++
-        description: ''
-        percent: 75
-        icon: code-bracket
-      - name: R & Matlab
-        description: ''
-        percent: 70
         icon: chart-bar
+      - name: C++
+        description: 'Systems programming'
+        percent: 80
+        icon: code-bracket
   - name: Research Areas
     color: '#eeac02'
     color_border: '#f0bf23'
     items:
-      - name: Theorem Proving
+      - name: Formal Theorem Proving
         description: ''
         percent: 95
         icon: academic-cap
-      - name: Machine Learning
+      - name: Reinforcement Learning
         description: ''
         percent: 90
         icon: cpu-chip
-      - name: Mathematical Reasoning
+      - name: Large Language Models
+        description: ''
+        percent: 88
+        icon: presentation-chart-bar
+      - name: Multi-Agent Systems
         description: ''
         percent: 85
         icon: presentation-chart-bar
 
 languages:
-  - name: Chinese Mandarin
+  - name: Chinese (Mandarin)
     percent: 100
   - name: English
-    percent: 80
+    percent: 85
 
-# Awards.
-#   Add/remove as many awards below as you like.
-#   Only `title`, `awarder`, and `date` are required.
-#   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
+# Awards
 awards:
   - title: Intel Young Talent Award
     date: '2019-08-01'
@@ -183,8 +181,10 @@ awards:
 
 ## About Me
 
-Wang Haocheng is a researcher focusing on large language models for formal mathematical reasoning and automated theorem proving. With experience at ByteDance and DeepSeek AI, his work centers on developing innovative approaches to enhance LLMs' reasoning capabilities through supervised fine-tuning and reinforcement learning.
+Wang Haocheng is a Scientific Assistant at ETH Zürich (D-INFK) and incoming PhD candidate at HKUST(GZ), specializing in formal mathematical reasoning and automated theorem proving using large language models. His research bridges artificial intelligence and formal mathematics, focusing on developing intelligent systems that can understand, reason about, and prove mathematical theorems.
 
-His research interests include formal theorem proving, agent building, and reinforcement learning. Wang has contributed to multiple research papers including "DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition" and "DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search."
+With extensive research experience at leading AI companies including DeepSeek AI and ByteDance, Wang has contributed to breakthrough work in automated theorem proving, achieving state-of-the-art results on benchmark datasets. His publications include pioneering work on **DeepSeek-Prover-V1.5** and **DeepSeek-Prover-V2**, which combine reinforcement learning with Monte-Carlo tree search for enhanced mathematical reasoning capabilities.
 
-Currently pursuing a PhD in Data Science and Analytics at HKUST(GZ), Wang is passionate about bridging the gap between artificial intelligence and formal mathematics.
+Currently at ETH Zürich, Wang is developing multi-LLM agent systems for autoformalization and formal reasoning in theoretical computer science, while also serving as a teaching assistant for courses on formalizing analysis of algorithms. His work represents a significant contribution to the emerging field of AI-assisted mathematical research and formal verification.
+
+Wang is passionate about making mathematical reasoning more accessible through AI and is actively involved in the formal theorem proving community, contributing to projects like Mathlib4 and developing new benchmarks for evaluating mathematical reasoning in AI systems.
