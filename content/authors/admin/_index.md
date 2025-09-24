@@ -198,7 +198,6 @@ I'm passionate about making mathematical reasoning more accessible through AI an
 
 
 <style>
-/* 强制覆盖头像样式 */
 .avatar, .avatar img, 
 .resume-biography-3 .avatar, 
 .resume-biography-3 .avatar img,
@@ -206,21 +205,19 @@ I'm passionate about making mathematical reasoning more accessible through AI an
   width: 200px !important;
   height: auto !important;
   max-height: 280px !important;
-  border-radius: 12px !important; /* 圆角矩形而非圆形 */
+  border-radius: 12px !important; 
   object-fit: cover !important;
   object-position: center top !important;
   min-width: unset !important;
   min-height: unset !important;
-  aspect-ratio: unset !important; /* 移除强制正方形比例 */
+  aspect-ratio: unset !important; 
 }
 
-/* 确保容器也不强制正方形 */
 .resume-biography-3 .avatar-container {
   width: auto !important;
   height: auto !important;
 }
 
-/* 移动端适配 */
 @media (max-width: 768px) {
   .avatar, .avatar img, 
   .resume-biography-3 .avatar, 
