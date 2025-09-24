@@ -54,12 +54,17 @@ education:
     date_end: ''
     summary: |
       Major in Information Hub, focusing on Data-driven AI & Machine Learning
+      
+      **Supervisor:** [Prof. Guo Zhijiang](https://cartus.github.io/)
   - area: BSc in Mathematics and Applied Mathematics (Honours)
     institution: Xiamen University
     date_start: 2020-09-01
     date_end: 2025-06-30
     summary: |
       GPA: 3.26/4.00
+      
+      **Final Year Project Supervisor:** [Dr. Ma Jiajun](https://www.majiajun.org/)  
+      *Topic: Formalization of Auction Theory using Lean and Mathlib4*
       
       Relevant Modules:
       - Mathematical Analysis, Complex Analysis, Linear Algebra
@@ -181,10 +186,12 @@ awards:
 
 ## About Me
 
-Wang Haocheng is a Scientific Assistant at ETH Zürich (D-INFK) and incoming PhD candidate at HKUST(GZ), specializing in formal mathematical reasoning and automated theorem proving using large language models. His research bridges artificial intelligence and formal mathematics, focusing on developing intelligent systems that can understand, reason about, and prove mathematical theorems.
+I'm a Scientific Assistant at ETH Zürich (D-INFK) and incoming PhD candidate at HKUST(GZ), specializing in formal mathematical reasoning and automated theorem proving using large language models. My research bridges artificial intelligence and formal mathematics, focusing on developing intelligent systems that can understand, reason about, and prove mathematical theorems.
 
-With extensive research experience at leading AI companies including DeepSeek AI and ByteDance, Wang has contributed to breakthrough work in automated theorem proving, achieving state-of-the-art results on benchmark datasets. His publications include pioneering work on **DeepSeek-Prover-V1.5** and **DeepSeek-Prover-V2**, which combine reinforcement learning with Monte-Carlo tree search for enhanced mathematical reasoning capabilities.
+My undergraduate thesis on "Formalization of Auction Theory using Lean and Mathlib4" was supervised by [Dr. Ma Jiajun](https://www.majiajun.org/) at Xiamen University, where I contributed to formalizing game theory concepts including second-price auction DSIC and Myerson's lemma. I will continue my PhD studies under the supervision of [Prof. Guo Zhijiang](https://cartus.github.io/) at HKUST(GZ), focusing on data-driven AI and machine learning approaches to mathematical reasoning.
 
-Currently at ETH Zürich, Wang is developing multi-LLM agent systems for autoformalization and formal reasoning in theoretical computer science, while also serving as a teaching assistant for courses on formalizing analysis of algorithms. His work represents a significant contribution to the emerging field of AI-assisted mathematical research and formal verification.
+With extensive research experience at leading AI companies including DeepSeek AI and ByteDance, I have contributed to breakthrough work in automated theorem proving, achieving state-of-the-art results on benchmark datasets. My publications include pioneering work on **DeepSeek-Prover-V1.5** and **DeepSeek-Prover-V2**, which combine reinforcement learning with Monte-Carlo tree search for enhanced mathematical reasoning capabilities.
 
-Wang is passionate about making mathematical reasoning more accessible through AI and is actively involved in the formal theorem proving community, contributing to projects like Mathlib4 and developing new benchmarks for evaluating mathematical reasoning in AI systems.
+Currently at ETH Zürich, I'm developing multi-LLM agent systems for autoformalization and formal reasoning in theoretical computer science, while also serving as a teaching assistant for courses on formalizing analysis of algorithms. My work represents a significant contribution to the emerging field of AI-assisted mathematical research and formal verification.
+
+I'm passionate about making mathematical reasoning more accessible through AI and am actively involved in the formal theorem proving community, contributing to projects like Mathlib4 and developing new benchmarks for evaluating mathematical reasoning in AI systems.
