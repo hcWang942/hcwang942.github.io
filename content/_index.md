@@ -17,7 +17,7 @@ sections:
       # Show a call-to-action button under your biography? (optional)
       button:
         text: My CV
-        url: uploads/Wang_Haocheng_CV.pdf  # Hugo会自动从static文件夹提供
+        url: uploads/Wang_Haocheng_CV.pdf 
     design:
       css_class: dark
       background:
