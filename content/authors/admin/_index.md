@@ -198,34 +198,36 @@ I'm passionate about making mathematical reasoning more accessible through AI an
 
 
 <style>
-.avatar {
-  width: 200px !important;
-  height: auto !important;
-  max-height: 250px !important;
-  border-radius: 15px !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  border: 2px solid rgba(255, 255, 255, 0.1) !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
-}
-
-.avatar:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
-}
-
+/* 强制覆盖头像样式 */
+.avatar, .avatar img, 
+.resume-biography-3 .avatar, 
+.resume-biography-3 .avatar img,
 .resume-biography-3 .avatar-container img {
   width: 200px !important;
   height: auto !important;
-  max-height: 250px !important;
+  max-height: 280px !important;
+  border-radius: 12px !important; /* 圆角矩形而非圆形 */
+  object-fit: cover !important;
+  object-position: center top !important;
   min-width: unset !important;
   min-height: unset !important;
+  aspect-ratio: unset !important; /* 移除强制正方形比例 */
 }
 
+/* 确保容器也不强制正方形 */
+.resume-biography-3 .avatar-container {
+  width: auto !important;
+  height: auto !important;
+}
+
+/* 移动端适配 */
 @media (max-width: 768px) {
-  .avatar, .resume-biography-3 .avatar-container img {
-    width: 130px !important;
-    max-height: 160px !important;
+  .avatar, .avatar img, 
+  .resume-biography-3 .avatar, 
+  .resume-biography-3 .avatar img,
+  .resume-biography-3 .avatar-container img {
+    width: 140px !important;
+    max-height: 180px !important;
   }
 }
 </style>
