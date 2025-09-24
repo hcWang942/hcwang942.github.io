@@ -1,21 +1,22 @@
-/* 自定义头像样式 - 改进头像显示效果 */
+/* 自定义头像样式 - 去掉圆形框，显示原图格式 */
 
-/* 主要头像样式调整 */
+/* 主要头像样式 - 矩形显示，保持原图比例 */
 .avatar {
-  width: 180px !important;
-  height: 180px !important;
-  border-radius: 50% !important;
+  width: 200px !important;
+  height: auto !important; /* 自动高度保持比例 */
+  max-height: 250px !important; /* 限制最大高度 */
+  border-radius: 15px !important; /* 轻微圆角，不是圆形 */
   object-fit: cover !important;
   object-position: center !important;
-  border: 3px solid rgba(255, 255, 255, 0.15) !important;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
 
 /* 头像悬停效果 */
 .avatar:hover {
-  transform: scale(1.05) !important;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* 改进个人简介区域的布局 */
@@ -39,28 +40,31 @@
   text-align: center !important;
 }
 
-/* 确保头像不会变形 */
+/* 确保头像容器不限制宽高比 */
 .resume-biography-3 .avatar-container img {
-  width: 180px !important;
-  height: 180px !important;
-  min-width: 180px !important;
-  min-height: 180px !important;
+  width: 200px !important;
+  height: auto !important; /* 保持原始比例 */
+  max-height: 250px !important;
+  min-width: unset !important; /* 移除最小宽度限制 */
+  min-height: unset !important; /* 移除最小高度限制 */
   flex-shrink: 0 !important;
 }
 
 /* 改进姓名和职位的显示 */
 .resume-biography-3 h1 {
-  font-size: 2.5rem !important;
+  font-size: 2.2rem !important;
   font-weight: 700 !important;
   margin-bottom: 0.5rem !important;
   color: white !important;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  line-height: 1.2 !important;
 }
 
 .resume-biography-3 .lead {
-  font-size: 1.25rem !important;
+  font-size: 1.1rem !important;
   margin-bottom: 1rem !important;
   opacity: 0.9 !important;
+  line-height: 1.4 !important;
 }
 
 /* 改进社交链接的显示 */
@@ -83,19 +87,17 @@
 /* 移动端响应式设计 */
 @media (max-width: 992px) {
   .avatar {
-    width: 150px !important;
-    height: 150px !important;
+    width: 160px !important;
+    max-height: 200px !important;
   }
   
   .resume-biography-3 .avatar-container img {
-    width: 150px !important;
-    height: 150px !important;
-    min-width: 150px !important;
-    min-height: 150px !important;
+    width: 160px !important;
+    max-height: 200px !important;
   }
   
   .resume-biography-3 h1 {
-    font-size: 2rem !important;
+    font-size: 1.8rem !important;
   }
   
   .resume-biography-3 .row {
@@ -106,15 +108,13 @@
 
 @media (max-width: 768px) {
   .avatar {
-    width: 120px !important;
-    height: 120px !important;
+    width: 130px !important;
+    max-height: 160px !important;
   }
   
   .resume-biography-3 .avatar-container img {
-    width: 120px !important;
-    height: 120px !important;
-    min-width: 120px !important;
-    min-height: 120px !important;
+    width: 130px !important;
+    max-height: 160px !important;
   }
   
   .resume-biography-3 .container {
@@ -122,21 +122,21 @@
   }
   
   .resume-biography-3 h1 {
-    font-size: 1.75rem !important;
+    font-size: 1.6rem !important;
   }
 }
 
-/* 可选样式 - 如果想要方形头像，取消下面注释 */
+/* 如果你想要完全方形的头像，取消下面的注释 */
 /*
-.avatar-square {
-  border-radius: 15% !important;
+.avatar {
+  border-radius: 0 !important;
 }
 */
 
-/* 可选样式 - 如果想要圆角矩形头像，取消下面注释 */
+/* 如果你想要更圆润的边角，取消下面的注释 */
 /*
-.avatar-rounded {
-  border-radius: 25% !important;
+.avatar {
+  border-radius: 25px !important;
 }
 */
 
