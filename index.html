@@ -20,7 +20,6 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="custom-styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
     <link href="assets/fontawesome-free-6.6.0-web/css/all.min.css" rel="stylesheet">
     <script src="assets/scripts/navbar.js"></script>
@@ -48,19 +47,16 @@
 
 <body>
     <div class="container blog" id="first-content" style="background-color: #E0E4E6;">
-        <div class="blog-title no-cover"> 
+    <div class="blog-title no-cover"> 
             <div class="blog-intro">
-                <div class="profile-container">
-                    <div class="profile-content">
+                <div style="display: flex; align-items: flex-start; gap: 40px;">
+                    <div style="flex: 1;">
                         <h1 class="title">Haocheng Wang (王浩丞)</h1>
                         <p class="author">
                             Scientific Assistant @ ETH Zürich | Former Research Intern @ ByteDance & DeepSeek AI
                         </p>
                         <p class="abstract">
-                            I am a Scientific Assistant at the Department of Computer Science (D-INFK), ETH Zürich, focusing on Multi-gLLM Agents for autoformalization and formal reasoning in Theoretical Computer Science. I am working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Sorrachai Yingchareonthawornchai</a>.
-                        </p>
-                        <p class="abstract">
-                            My research interests lie in developing Large Language Models for formal mathematical reasoning, automated theorem proving, and the intersection of AI and mathematics.
+                            I am a Scientific Assistant at the Department of Computer Science (D-INFK), ETH Zürich, focusing on Multi-gLLM Agents for autoformalization and formal reasoning in Theoretical Computer Science. My research interests lie in developing Large Language Models for formal mathematical reasoning, automated theorem proving, and the intersection of AI and mathematics.
                         </p>
                         <div class="link">
                             <a href="mailto:haocheng.wang@inf.ethz.ch" target="_blank"><i class="fas fa-envelope"></i> Email</a>
@@ -70,8 +66,10 @@
                         </div>
                     </div>
                     
-                    <div class="profile-photo">
-                        <img src="assets/figures/profile.jpg" alt="Haocheng Wang">
+                    <div style="flex-shrink: 0;">
+                        <img src="assets/figures/profile.jpg" 
+                            alt="Haocheng Wang" 
+                            style="width: 240px; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                     </div>
                 </div>
             </div>
@@ -84,10 +82,10 @@
         <!-- About Me Section -->
         <h1>About Me</h1>
         <p class="text">
-            Previously, I was a Research Intern at ByteDance Seed (Jan 2025 - Jul 2025) and an AGI Research Assistant at DeepSeek AI (June 2024 - Sep 2024).
+            I am currently working as a Scientific Assistant at ETH Zürich (<a href="https://inf.ethz.ch/" target="_blank">D-INFK</a>), where I build Multi-gLLM Agents for autoformalization and formal reasoning in Theoretical Computer Science. I am working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Sorrachai Yingchareonthawornchai</a>. Previously, I was a Research Intern at ByteDance Seed (Jan 2025 - Jul 2025) and an AGI Research Assistant at DeepSeek AI (June 2024 - Sep 2024).
         </p>
         <p class="text">
-            I completed my Bachelor's degree in Mathematics and Applied Mathematics (Honours) at Xiamen University in 2025, where I worked on formalizing Auction Theory using Lean 4 and Mathlib4 as my final year project under the supervision of <a href="https://www.majiajun.org/" target="_blank">Prof. Ma Jiajun</a>.
+            I recieved my Bachelor's degree in Mathematics and Applied Mathematics (Honours) at Xiamen University in 2025, where I worked on formalizing Auction Theory using Lean 4 and Mathlib4 as my final year project under the supervision of <a href="https://www.majiajun.org/" target="_blank">Prof. Ma Jiajun</a>.
         </p>
 
         <!-- Research Interests -->
@@ -104,96 +102,150 @@
         <!-- Selected Publications -->
         <h1>Selected Publications</h1>
         
-        <div class="publication-item">
+        <div class="text">
             <h2>DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition</h2>
             
-            <div class="publication-layout">
+            <!-- 项目布局：左图右文 -->
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
+                <!-- 左侧：结果图 -->
                 <div>
                     <img src="assets/figures/deepseek-prover-v2-result.png" 
                         alt="DeepSeek-Prover-V2 Results" 
-                        class="publication-image">
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 </div>
                 
+                <!-- 右侧：摘要 -->
                 <div>
-                    <p><strong>Abstract:</strong> We present DeepSeek-Prover-V2, achieving SOTA results on miniF2F (88.9%) and PutnamBench (47 out of 658). Our approach combines reinforcement learning with subgoal decomposition to enhance formal mathematical reasoning capabilities.</p>
+                    <p>
+                        <strong>Abstract:</strong> We present DeepSeek-Prover-V2, achieving SOTA results on miniF2F (88.9%) and PutnamBench (47 out of 658). Our approach combines reinforcement learning with subgoal decomposition to enhance formal mathematical reasoning capabilities.
+                    </p>
                     
-                    <div class="paper-links">
-                        <a href="https://arxiv.org/abs/2504.21801" target="_blank" class="paper-btn">
-                            <i class="fas fa-file-pdf"></i> Paper
+                    <!-- 按钮组 -->
+                    <div style="margin-top: 15px;">
+                        <a href="https://arxiv.org/abs/2504.21801" target="_blank" class="button icon" style="background-color: #4CAF50; color: white;">
+                            Paper <i class="fas fa-file-alt"></i>
                         </a>
-                        <a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B" target="_blank" class="paper-btn">
-                            <i class="fas fa-robot"></i> Model
+                        <a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B" target="_blank" class="button icon" style="background-color: #FF9800; color: white;">
+                            Model <i class="fas fa-brain"></i>
                         </a>
-                        <a href="#" target="_blank" class="paper-btn">
-                            <i class="fab fa-github"></i> Code
+                        <a href="#" target="_blank" class="button icon" style="background-color: #2196F3; color: white;">
+                            Code <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" target="_blank" class="button icon" style="background-color: #9C27B0; color: white;">
+                            Demo <i class="fas fa-play"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="publication-item">
+
+        <!-- 项目 2: DeepSeek-Prover-V1.5 -->
+        <div class="text">
             <h2>DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search</h2>
             
-            <div class="publication-layout">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
                 <div>
                     <img src="assets/figures/deepseek-prover-v1.5-result.png" 
                         alt="DeepSeek-Prover-V1.5 Results" 
-                        class="publication-image"
-                        onerror="this.style.display='none'">
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 </div>
                 
                 <div>
-                    <p><strong>Published at ICLR 2025</strong></p>
-                    <p><strong>Abstract:</strong> A novel hybrid approach combining LLMs and Monte-Carlo tree search for automated theorem proving. Achieved SOTA results on miniF2F (63.5%) and ProofNet (25.3%).</p>
+                    <p>
+                        <strong>Published at ICLR 2025</strong><br>
+                        <strong>Abstract:</strong> A novel hybrid approach combining LLMs and Monte-Carlo tree search for automated theorem proving. Achieved SOTA results on miniF2F (63.5%) and ProofNet (25.3%).
+                    </p>
                     
-                    <div class="paper-links">
-                        <a href="https://openreview.net/forum?id=iOeoGeennC" target="_blank" class="paper-btn">
-                            <i class="fas fa-file-pdf"></i> Paper
+                    <div style="margin-top: 15px;">
+                        <a href="https://arxiv.org/abs/2408.08152" target="_blank" class="button icon" style="background-color: #4CAF50; color: white;">
+                            Paper <i class="fas fa-file-alt"></i>
                         </a>
-                        <a href="#" target="_blank" class="paper-btn">
-                            <i class="fab fa-github"></i> Code
+                        <a href="https://openreview.net/forum?id=iOeoGeennC" target="_blank" class="button icon" style="background-color: #FF5722; color: white;">
+                            OpenReview <i class="fas fa-comments"></i>
+                        </a>
+                        <a href="#" target="_blank" class="button icon" style="background-color: #2196F3; color: white;">
+                            Code <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="publication-item">
+
+        <!-- 项目 3: Solving Formal Math Problems -->
+        <div class="text">
             <h2>Solving Formal Math Problems by Decomposition and Iterative Reflection</h2>
             
-            <div class="publication-layout">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
                 <div>
-                    <img src="assets/figures/solving-formal-math.png" 
-                        alt="Solving Formal Math Problems" 
-                        class="publication-image"
-                        onerror="this.style.display='none'">
+                    <img src="assets/figures/formal-math-result.png" 
+                        alt="Formal Math Results" 
+                        style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
                 </div>
                 
                 <div>
-                    <p><strong>arXiv Preprint</strong></p>
-                    <p><strong>Abstract:</strong> Built a Scoring & Self-refinement agent pipeline for Natural Language Proof, generating reliable informal proofs to provide informal-formal data pairs for model training and enhancing the reasoning capabilities.</p>
+                    <p>
+                        <strong>Abstract:</strong> Built a Scoring & Self-refinement agent pipeline for Natural Language Proof, generating reliable informal proofs to provide informal-formal data pairs for model training and enhancing reasoning capabilities.
+                    </p>
                     
-                    <div class="paper-links">
-                        <a href="https://arxiv.org/abs/2507.15225" target="_blank" class="paper-btn">
-                            <i class="fas fa-file-pdf"></i> Paper
+                    <div style="margin-top: 15px;">
+                        <a href="https://arxiv.org/abs/2507.15225" target="_blank" class="button icon" style="background-color: #4CAF50; color: white;">
+                            Paper <i class="fas fa-file-alt"></i>
+                        </a>
+                        <a href="#" target="_blank" class="button icon" style="background-color: #2196F3; color: white;">
+                            Code <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Academic Activities -->
-        <h1>Academic Activities</h1>
+        <h1>Professional Experience</h1>
         
-        <h3>Teaching</h3>
+        <h2>ETH Zürich (Aug 2025 - Present)</h2>
+        <p class="text">
+            <em>Scientific Assistant I - D-INFK, Zürich, Switzerland</em><br>
+            Building Multi-gLLM Agents for autoformalization and formal reasoning in Theoretical Computer Science.
+        </p>
+
+        <h2>ByteDance Co., Ltd. (Jan 2025 - Jul 2025)</h2>
+        <p class="text">
+            <em>LLM & RL Research Intern - ByteDance Seed, Shanghai, China</em>
+        </p>
         <ul>
-            <li><strong>Formalizing Analysis of Algorithms</strong> - Course TA, ETH Zürich (Sep 2025 - Present)</li>
+            <li>Developed LLMs for formal mathematical reasoning through Supervised Fine-Tuning approaches</li>
+            <li>Built Scoring & Self-refinement agent pipeline for Natural Language Proof</li>
+            <li>Proposed sketch-incorporated long Chain-of-Thought formal reasoning method</li>
+            <li>Led data annotation initiatives for DeltaProver</li>
         </ul>
 
-        <h3>Summer Schools</h3>
+        <h2>DeepSeek AI Co., Ltd. (June 2024 - Sep 2024)</h2>
+        <p class="text">
+            <em>AGI Research Assistant, Beijing, China</em>
+        </p>
         <ul>
-            <li><strong>Princeton-Shanghai Jiaotong Summer School: Mathematics of Data Science</strong> - Shanghai Jiaotong University (Summer 2025)</li>
+            <li>Built LeanAgent, a multimodal agent for Lean 4 autoformalization tasks</li>
+            <li>Developed ProverBench, a domain-categorized benchmark with 325 problems for evaluating LLM theorem proving</li>
+            <li>Manually annotated Lean 4 code benchmarks (MINIF2F, FIMO, IMO problems)</li>
+            <li>Contributed to DeepSeek-Prover-V1.5 and V2 model development</li>
+        </ul>
+
+        <!-- Education -->
+        <h1>Education</h1>
+        <h2>Xiamen University (Sep 2020 - Jun 2025)</h2>
+        <p class="text">
+            <strong>Bachelor of Science</strong> in Mathematics and Applied Mathematics (Honours)<br>
+            <br>
+            <strong>Final Thesis:</strong> Formalization of Auction Theory using Lean 4 and Mathlib4<br>
+            <a href="https://github.com/hcWang942/FinalYearProject" target="_blank">[GitHub]</a> <a href="https://github.com/leanprover-community/mathlib4/pull/13248" target="_blank">[Mathlib4 PR#13248]</a>
+        </p>
+
+        <!-- Teaching & Service -->
+        <h1>Teaching & Service</h1>
+        
+        <h3>Teaching Assistant</h3>
+        <ul>
+            <li><strong>Formalizing Analysis of Algorithms</strong> - ETH Zürich (Sep 2025 - Present)</li>
+            <li><strong>AI4Math: Lean 4 and Formal Mathematics</strong> - Shanghai Jiaotong University (Summer 2025)</li>
             <li><strong>AI For Math: Formalization Mathematics Theories and Proofs</strong> - Peking University (Summer 2024, Winter 2024)</li>
         </ul>
 
@@ -220,8 +272,8 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p style="text-align: center; padding: 20px; color: #666;">
-                This website is built on the <a href="https://shikun.io/projects/clarity" target="_blank">Clarity Template</a>, designed by <a href="https://shikun.io/" target="_blank">Shikun Liu</a>. 
+            <p>
+                This website is built on the <a href="https://shikun.io/projects/clarity">Clarity Template</a>, designed by <a href="https://shikun.io/">Shikun Liu</a>. 
                 © 2025 Haocheng Wang. Last updated: November 2025.
             </p>
         </div>    
