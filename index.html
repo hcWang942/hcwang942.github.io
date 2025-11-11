@@ -43,13 +43,49 @@
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <style>
+        /* Mobile responsive fixes */
+        @media screen and (max-width: 768px) {
+            /* 头像区域响应式 */
+            .profile-header {
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+            
+            .profile-photo {
+                width: 150px !important;
+                height: auto !important;
+                margin: 0 auto !important;
+                display: block !important;
+            }
+            
+            /* Publications区域响应式 */
+            .publication-layout {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            .publication-layout img {
+                max-width: 100% !important;
+            }
+            
+            /* 按钮组在移动端换行 */
+            .button.icon {
+                display: inline-block !important;
+                margin: 5px 5px 5px 0 !important;
+                font-size: 0.75em !important;
+                padding: 0.6em 0.8em !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="container blog" id="first-content" style="background-color: #E0E4E6;">
     <div class="blog-title no-cover"> 
             <div class="blog-intro">
-                <div style="display: flex; align-items: flex-start; gap: 40px;">
+                <div class="profile-header" style="display: flex; align-items: flex-start; gap: 40px;">
                     <div style="flex: 1;">
                         <h1 class="title">Haocheng Wang (王浩丞)</h1>
                         <p class="author">
@@ -67,7 +103,7 @@
                     </div>
                     
                     <div style="flex-shrink: 0;">
-                        <img src="assets/figures/profile.jpg" 
+                        <img class="profile-photo" src="assets/figures/profile.jpg" 
                             alt="Haocheng Wang" 
                             style="width: 240px; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
                     </div>
@@ -106,7 +142,7 @@
             <h2>DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition</h2>
             
             <!-- 项目布局：左图右文 -->
-            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
+            <div class="publication-layout" style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
                 <!-- 左侧：结果图 -->
                 <div>
                     <img src="assets/figures/deepseek-prover-v2-result.png" 
@@ -143,7 +179,7 @@
         <div class="text">
             <h2>DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search</h2>
             
-            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
+            <div class="publication-layout" style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
                 <div>
                     <img src="assets/figures/deepseek-prover-v1.5-result.png" 
                         alt="DeepSeek-Prover-V1.5 Results" 
@@ -175,7 +211,7 @@
         <div class="text">
             <h2>Solving Formal Math Problems by Decomposition and Iterative Reflection</h2>
             
-            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
+            <div class="publication-layout" style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin: 20px 0;">
                 <div>
                     <img src="assets/figures/formal-math-result.png" 
                         alt="Formal Math Results" 
