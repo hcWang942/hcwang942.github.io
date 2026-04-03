@@ -506,10 +506,22 @@
                 text-align: center;
             }
             .profile-body {
-                gap: 14px !important;
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                align-items: flex-start !important;
+                gap: 12px !important;
+            }
+            .profile-bio {
+                flex: 1 1 0 !important;
+                min-width: 0 !important;
+                word-break: break-word !important;
+            }
+            .profile-photo-wrap {
+                flex: 0 0 35% !important;
+                width: 35% !important;
             }
             .profile-photo {
-                width: 100px !important;
+                width: 100% !important;
                 height: auto !important;
             }
             
