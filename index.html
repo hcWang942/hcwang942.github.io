@@ -368,9 +368,32 @@
             padding-top: 0 !important;
         }
         div.container.blog#first-content div.blog-title.no-cover .blog-intro {
-            padding: 2vh 0 !important;
+            padding: 3vh 0 !important;
             justify-content: flex-start !important;
             gap: 8px !important;
+        }
+
+        /* Header links smaller */
+        .profile-bio .link, .profile-bio .link a, .profile-bio .link span {
+            font-size: 0.82em !important;
+        }
+
+        /* Profile header structure */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .profile-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+        }
+        .profile-bio {
+            flex: 1;
+        }
+        .profile-photo-wrap {
+            flex-shrink: 0;
         }
 
         /* Override base theme's aggressive vw-based padding */
@@ -390,8 +413,8 @@
             max-width: 860px;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 24px;
-            padding-right: 24px;
+            padding-left: 40px;
+            padding-right: 40px;
         }
 
         /* Fix education card: collapse p margins and padding inside the card */
@@ -463,16 +486,31 @@
 
         /* Mobile responsive fixes */
         @media screen and (max-width: 768px) {
-            .profile-header {
-                flex-direction: column !important;
-                gap: 20px !important;
+            /* Navbar: horizontally scrollable, no wrapping */
+            .top-nav ul {
+                justify-content: flex-start !important;
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+                scrollbar-width: none;
             }
-            
+            .top-nav ul::-webkit-scrollbar { display: none; }
+            .top-nav ul li a {
+                padding: 10px 10px;
+                font-size: 0.76em;
+            }
+
+            /* Mobile header: name centered on top, bio+photo side by side below */
+            .profile-name {
+                text-align: center;
+            }
+            .profile-body {
+                gap: 14px !important;
+            }
             .profile-photo {
-                width: 150px !important;
+                width: 100px !important;
                 height: auto !important;
-                margin: 0 auto !important;
-                display: block !important;
             }
             
             .publication-image {
@@ -546,7 +584,6 @@
             <li><a href="#news">News</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
-            <li><a href="#service">Service</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -554,30 +591,35 @@
     <div class="container blog" id="first-content" style="background-color: #E0E4E6;">
     <div class="blog-title no-cover"> 
             <div class="blog-intro">
-                <div class="profile-header" style="display: flex; align-items: flex-start; gap: 40px;">
-                    <div style="flex: 1;">
+                <div class="profile-header">
+                    <!-- Name + affiliation: always on top -->
+                    <div class="profile-name">
                         <h1 class="title">Haocheng Wang (王浩丞)</h1>
                         <p class="author">
                             PhD @ HKUST(GZ) | Visiting Researcher @ ETH Zürich
                         </p>
-                        <p class="abstract">
-                            I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning and autoformalization. 
-                        </p>
-                        <p style="text-align: left; font-style: italic; color: #666; margin: 10px 0 10px 0; font-size: 0.95em; padding-left: 15px; border-left: 3px solid #0073b1;">
-                            日拱一卒 · Keep bounding the rock
-                        </p>
-                        <div class="link">
-                            <span style="cursor:default;"><i class="fas fa-envelope"></i> Email</span>
-                            <a href="https://github.com/hcWang942" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="https://scholar.google.com/citations?user=HLJz8yIAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-                            <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> CV</a>
-                        </div>
                     </div>
-                    
-                    <div style="flex-shrink: 0;">
-                        <img class="profile-photo" src="assets/figures/profile.jpg" 
-                            alt="Haocheng Wang" 
-                            style="width: 200px; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                    <!-- Bio row: text left, photo right -->
+                    <div class="profile-body">
+                        <div class="profile-bio">
+                            <p class="abstract">
+                                I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning and autoformalization.
+                            </p>
+                            <p style="text-align: left; font-style: italic; color: #666; margin: 10px 0 10px 0; font-size: 0.95em; padding-left: 15px; border-left: 3px solid #0073b1;">
+                                日拱一卒 · Keep bounding the rock
+                            </p>
+                            <div class="link">
+                                <span style="cursor:default;"><i class="fas fa-envelope"></i> Email</span>
+                                <a href="https://github.com/hcWang942" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://scholar.google.com/citations?user=HLJz8yIAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                                <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> CV</a>
+                            </div>
+                        </div>
+                        <div class="profile-photo-wrap">
+                            <img class="profile-photo" src="assets/figures/profile.jpg"
+                                alt="Haocheng Wang"
+                                style="width: 200px; height: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        </div>
                     </div>
                 </div>
             </div>
