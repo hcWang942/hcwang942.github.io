@@ -46,25 +46,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
     <style>
-        /* Unified typography - Serif fonts for body text */
+        /* Unified typography - System sans-serif throughout */
         body {
-            font-family: Georgia, "Times New Roman", Times, serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
-        
+
         .text, p, li, .abstract, .author {
-            font-family: Georgia, "Times New Roman", Times, serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.7;
         }
-        
+
         h1, h2, h3 {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         
-        h3 {
-            font-size: 1.1em;
-            font-weight: 600;
-            margin-top: 25px;
+        /* Section headings in main content */
+        .main h2.section-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            border-bottom: 2px solid #0073b1;
+            padding-bottom: 6px;
+            margin-top: 20px;
             margin-bottom: 10px;
+            color: #111;
+        }
+
+        h3 {
+            font-size: 1em;
+            font-weight: 600;
+            margin-top: -0.4em;
+            margin-bottom: 0;
         }
         
         /* Service lists styling - proper indentation */
@@ -72,12 +83,14 @@
             margin-left: 20px;
             padding-left: 0;
             list-style-position: outside;
+            margin-top: 0;
+            margin-bottom: 6px;
         }
-        
+
         .service-list li {
             font-size: 1em;
             line-height: 1.7;
-            margin-bottom: 8px;
+            margin-bottom: 0;
         }
         
         /* Education card styling */
@@ -115,10 +128,14 @@
         }
 
         .education-info h2 {
-            margin: 0 0 3px 0;
+            margin: 0 0 3px 0 !important;
+            padding-top: 0 !important;
             font-size: 1.05em;
             font-weight: 600;
             line-height: 1.25;
+        }
+        .education-info {
+            padding-top: 0 !important;
         }
 
         .education-info .text {
@@ -131,82 +148,99 @@
             margin-bottom: 0;
         }
         
-        /* Publications - Centered image, description below */
+        /* Publications - Left image, right details */
         .publication-item {
-            background: #f5f5f5;
-            padding: 30px;
-            margin-bottom: 30px;
-            border: 1px solid #ddd;
-            border-radius: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        
-        .publication-authors {
-            font-size: 0.85em;
-            color: #666;
-            margin-bottom: 3px;
-            line-height: 1.3;
-        }
-        
-        .publication-venue {
-            font-size: 0.85em;
-            color: #666;
-            margin-bottom: 8px;
-        }
-        
-        .publication-item h2 {
-            margin: 0 0 5px 0;
-            font-size: 1.25em;
-            font-weight: 600;
-            color: #333;
-            line-height: 1.3;
-        }
-        
-        .publication-content {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px solid #e8e8e8;
+            margin-bottom: 0;
         }
-        
+        .publication-item:first-of-type {
+            border-top: 1px solid #e8e8e8;
+        }
+
         .publication-image {
-            width: 100%;
-            margin-bottom: 20px;
+            flex: 0 0 35%;
+            max-width: 35%;
         }
-        
         .publication-image img {
             width: 100%;
             height: auto;
-            border-radius: 0;
-            border: 1px solid #ccc;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            display: block;
         }
-        
+
         .publication-details {
-            width: 100%;
-            text-align: left;
+            flex: 1;
+            min-width: 0;
+            padding-top: 0 !important;
+            margin-top: 0 !important;
+            align-self: flex-start !important;
         }
-        
+        .publication-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+        div.container.blog.main .publication-details > * {
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        .publication-details h2 {
+            font-size: 0.9em;
+            font-weight: 700;
+            color: #111;
+            margin: 0 0 4px 0 !important;
+            padding: 0 !important;
+            line-height: 1.35;
+        }
+        .publication-authors {
+            font-size: 0.7em;
+            color: #555;
+            margin: 0 0 3px 0 !important;
+            padding: 0 !important;
+            line-height: 1.4;
+        }
+        .publication-venue {
+            font-size: 0.82em;
+            font-weight: 700;
+            color: #0073b1;
+            margin: 0 0 6px 0 !important;
+            padding: 0 !important;
+        }
         .publication-details p {
-            margin: 0 0 15px 0;
-            line-height: 1.6;
-            font-size: 0.95em;
-        }
-        
-        /* Simplified button styling */
-        .publication-buttons {
-            margin-top: 15px;
-        }
-        
-        .publication-buttons .button.icon {
-            background-color: #666;
-            color: white;
-            padding: 0.5em 0.9em;
             font-size: 0.8em;
-            margin: 5px 8px 5px 0;
-            border-radius: 3px;
+            color: #444;
+            margin: 0 0 6px 0;
+            line-height: 1.5;
         }
-        
+        .publication-buttons {
+            margin-top: 6px;
+        }
+        .publication-buttons .button.icon {
+            display: inline-block;
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #333;
+            border: 1px solid #bbb;
+            border-radius: 3px;
+            padding: 2px 8px;
+            margin: 2px 4px 2px 0;
+            text-decoration: none;
+            background: white;
+        }
         .publication-buttons .button.icon:hover {
-            background-color: #444;
+            background: #f0f0f0;
+            border-color: #888;
+        }
+
+        @media screen and (max-width: 600px) {
+            .publication-item { flex-direction: column; }
+            .publication-image, .publication-image img { width: 100%; height: auto; }
         }
         
         /* Experience - LinkedIn exact style with dots and white cards */
@@ -329,6 +363,104 @@
             transition: opacity 0.2s;
         }
         
+        /* Compact header */
+        div.container.blog#first-content {
+            padding-top: 0 !important;
+        }
+        div.container.blog#first-content div.blog-title.no-cover .blog-intro {
+            padding: 2vh 0 !important;
+            justify-content: flex-start !important;
+            gap: 8px !important;
+        }
+
+        /* Override base theme's aggressive vw-based padding */
+        /* Max-width + auto margin to center content on all screen sizes */
+        div.container.blog.main {
+            max-width: 900px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+        }
+        div.container.blog#first-content {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        div.container.blog#first-content .blog-intro {
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        /* Fix education card: collapse p margins and padding inside the card */
+        .education-info p, .education-info p.text {
+            margin: 0 0 4px 0 !important;
+            padding: 0 !important;
+            line-height: 1.45 !important;
+        }
+        .education-info h2 {
+            margin-bottom: 2px !important;
+            padding: 0 !important;
+        }
+
+        /* Research Interests bullets - restore with padding to keep inside */
+        div.container.blog.main ul:not(.service-list) {
+            list-style: disc;
+            padding-left: 1.4em;
+        }
+
+        /* Reduce About Me paragraph spacing */
+        div.container.blog.main p.text {
+            padding: 0vh 0 !important;
+        }
+
+        /* Sticky top navigation bar */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(224,228,230,0.95);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid transparent;
+            padding: 0;
+            transition: background 0.5s, border-color 0.5s;
+        }
+        .top-nav.scrolled {
+            background: rgba(255,255,255,0.97);
+            border-bottom-color: #e8e8e8;
+        }
+        .top-nav ul {
+            display: flex;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 auto !important;
+            max-width: 900px;
+            gap: 0;
+            justify-content: center;
+        }
+        .top-nav ul li {
+            margin: 0 !important;
+        }
+        .top-nav ul li a {
+            display: block;
+            padding: 10px 14px;
+            font-size: 0.82em;
+            font-weight: 500;
+            color: #444;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .top-nav ul li a:hover {
+            color: #0073b1;
+        }
+
+        /* Anchor offset: compensate for sticky navbar height (~40px) */
+        h2.section-title {
+            scroll-margin-top: 50px;
+        }
+
         /* Mobile responsive fixes */
         @media screen and (max-width: 768px) {
             .profile-header {
@@ -407,6 +539,18 @@
 </head>
 
 <body>
+    <nav class="top-nav">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     <div class="container blog" id="first-content" style="background-color: #E0E4E6;">
     <div class="blog-title no-cover"> 
             <div class="blog-intro">
@@ -419,11 +563,11 @@
                         <p class="abstract">
                             I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning and autoformalization. 
                         </p>
-                        <p style="text-align: left; font-style: italic; color: #666; margin: 20px 0 20px 0; font-size: 0.95em; padding-left: 15px; border-left: 3px solid #0073b1;">
+                        <p style="text-align: left; font-style: italic; color: #666; margin: 10px 0 10px 0; font-size: 0.95em; padding-left: 15px; border-left: 3px solid #0073b1;">
                             日拱一卒 · Keep bounding the rock
                         </p>
                         <div class="link">
-                            <a href="mailto:haocheng.wang@inf.ethz.ch" target="_blank"><i class="fas fa-envelope"></i> Email</a>
+                            <span style="cursor:default;"><i class="fas fa-envelope"></i> Email</span>
                             <a href="https://github.com/hcWang942" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                             <a href="https://scholar.google.com/citations?user=HLJz8yIAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
                             <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> CV</a>
@@ -444,7 +588,7 @@
     <div class="container blog main">
         
         <!-- About Me Section -->
-        <h1>About Me</h1>
+        <h2 class="section-title" id="about">About Me</h2>
         <p class="text">
             I am a direct doctoral student at <a href="https://dsa.hkust-gz.edu.cn/" target="_blank">DSA Thrust</a>, HKUST(GZ) supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>. Currently, I am a Visiting Researcher at ETH Zürich (<a href="https://inf.ethz.ch/" target="_blank">D-INFK</a>), working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a> on verifiable autoformalization and formal reasoning in Theoretical Computer Science. Previously, I was a Student Researcher at <a href="https://seed.bytedance.com/en/" target="_blank">ByteDance Seed</a> and <a href="https://huggingface.co/deepseek-ai" target="_blank">DeepSeek AI</a>.
         </p>
@@ -453,7 +597,7 @@
         </p>
 
         <!-- Research Interests -->
-        <h1>Research Interests</h1>
+        <h2 class="section-title" id="research">Research Interests</h2>
         <p class="text">
             My research focuses on:
         </p>
@@ -463,119 +607,81 @@
             <li><strong>AI for Mathematics:</strong> Creating benchmarks, tools, and methods to advance AI's capability in mathematical reasoning</li>
         </ul>
 
+        <!-- News -->
+        <h2 class="section-title" id="news">News</h2>
+        <div style="max-height: 180px; overflow-y: auto; padding-right: 4px;">
+        <table style="width:100%; border-collapse: collapse; font-size: 1em; line-height: 1.7;">
+            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 6px;">Our <strong>3rd AI4Math Workshop</strong> at ICML 2026 has been accepted!</td></tr>
+            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Jan. 2026</td><td style="vertical-align:top; padding-bottom: 6px;">Started as a Ph.D. student at <strong>HKUST(GZ)</strong>, DSA Thrust, supervised by Prof. Zhijiang Guo.</td></tr>
+            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 6px;">Joined <strong>ETH Zürich</strong> (D-INFK) as a Visiting Researcher, working with Prof. Rasmus Kyng and Dr. Sorrachai Yingchareonthawornchai.</td></tr>
+            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Jan. 2025</td><td style="vertical-align:top; padding-bottom: 6px;">Joined <strong>ByteDance Seed</strong> as a Student Researcher.</td></tr>
+            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 0 0; white-space:nowrap;">Jun. 2024</td><td style="vertical-align:top;">Joined <strong>DeepSeek AI</strong> as a Student Researcher.</td></tr>
+        </table>
+        </div>
+
         <!-- Selected Publications -->
-        <h1>Featured Projects</h1>
+        <h2 class="section-title" id="projects">Featured Projects</h2>
         
         <!-- Publication 1 -->
         <div class="publication-item">
-            <div class="publication-authors">
-                Z.Z. Ren, Zhihong Shao, Junxiao Song, Huajian Xin, <u>Haocheng Wang</u>, Wanjia Zhao, Liyue Zhang, Zhe Fu, Qihao Zhu, Dejian Yang, Z.F. Wu, Zhibin Gou, Shirong Ma, Hongxuan Tang, Yuxuan Liu, Wenjun Gao, Daya Guo, Chong Ruan
+            <div class="publication-image">
+                <img src="assets/figures/deepseek-prover-v2-result.png" alt="DeepSeek-Prover-V2">
             </div>
-            <div class="publication-venue">
-                ArXiv Preprint
-            </div>
-            
-            <h2>DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition</h2>
-            
-            <div class="publication-content">
-                <div class="publication-image">
-                    <img src="assets/figures/deepseek-prover-v2-result.png" 
-                        alt="DeepSeek-Prover-V2 Results">
-                </div>
-                
-                <div class="publication-details">
-                    <p>
-                        </strong> DeepSeek-Prover-V2, a 671B-sized model achieving SOTA results on miniF2F (88.9%) and PutnamBench (47 out of 658). Our approach combines reinforcement learning with subgoal decomposition to enhance formal mathematical reasoning capabilities.
-                    </p>
-                    
+            <div class="publication-details">
+                <h2>DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition</h2>
+                <div class="publication-authors">Z.Z. Ren, Zhihong Shao, Junxiao Song, Huajian Xin, <u>Haocheng Wang</u>, Wanjia Zhao, Liyue Zhang, Zhe Fu, Qihao Zhu, Dejian Yang, Z.F. Wu, Zhibin Gou, Shirong Ma, Hongxuan Tang, Yuxuan Liu, Wenjun Gao, Daya Guo, Chong Ruan</div>
+                <p>671B-sized model achieving SOTA on miniF2F (88.9%) and PutnamBench (47/658) via RL with subgoal decomposition.</p>
+                <div class="publication-bottom">
                     <div class="publication-buttons">
-                        <a href="https://arxiv.org/abs/2504.21801" target="_blank" class="button icon">
-                            PAPER <i class="fas fa-file-alt"></i>
-                        </a>
-                        <a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B" target="_blank" class="button icon">
-                            MODEL <i class="fas fa-brain"></i>
-                        </a>
-                        <a href="#" target="_blank" class="button icon">
-                            CODE <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" target="_blank" class="button icon">
-                            DEMO <i class="fas fa-play"></i>
-                        </a>
+                        <a href="https://arxiv.org/abs/2504.21801" target="_blank" class="button icon">Paper</a>
+                        <a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B" target="_blank" class="button icon">Model</a>
+                        <a href="#" target="_blank" class="button icon">Code</a>
                     </div>
+                    <div class="publication-venue">ArXiv Preprint, 2025</div>
                 </div>
             </div>
         </div>
 
         <!-- Publication 2 -->
         <div class="publication-item">
-            <div class="publication-authors">
-                Huajian Xin, Z.Z. Ren, Junxiao Song, Zhihong Shao, Wanjia Zhao, <u>Haocheng Wang</u>, Bo Liu, Liyue Zhang, Xuan Lu, Qiushi Du, Wenjun Gao, Qihao Zhu, Dejian Yang, Zhibin Gou, Z.F. Wu, Fuli Luo, Chong Ruan
+            <div class="publication-image">
+                <img src="assets/figures/deepseek-prover-v1.5-result.png" alt="DeepSeek-Prover-V1.5">
             </div>
-            <div class="publication-venue">
-                ICLR 2025
-            </div>
-
-            <h2>DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search</h2>
-            
-            <div class="publication-content">
-                <div class="publication-image">
-                    <img src="assets/figures/deepseek-prover-v1.5-result.png" 
-                        alt="DeepSeek-Prover-V1.5 Results">
-                </div>
-                
-                <div class="publication-details">
-                    <p>
-                        </strong> A novel hybrid approach combining LLMs and Monte-Carlo tree search for automated theorem proving. Achieved SOTA results on miniF2F (63.5%) and ProofNet (25.3%).
-                    </p>
+            <div class="publication-details">
+                <h2>DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search</h2>
+                <div class="publication-authors">Huajian Xin, Z.Z. Ren, Junxiao Song, Zhihong Shao, Wanjia Zhao, <u>Haocheng Wang</u>, Bo Liu, Liyue Zhang, Xuan Lu, Qiushi Du, Wenjun Gao, Qihao Zhu, Dejian Yang, Zhibin Gou, Z.F. Wu, Fuli Luo, Chong Ruan</div>
+                <p>Hybrid approach combining LLMs and Monte-Carlo tree search. SOTA on miniF2F (63.5%) and ProofNet (25.3%).</p>
+                <div class="publication-bottom">
                     <div class="publication-buttons">
-                        <a href="https://arxiv.org/abs/2408.08152" target="_blank" class="button icon">
-                            PAPER <i class="fas fa-file-alt"></i>
-                        </a>
-                        <a href="https://openreview.net/forum?id=iOeoGeennC" target="_blank" class="button icon">
-                            OPENREVIEW <i class="fas fa-comments"></i>
-                        </a>
-                        <a href="#" target="_blank" class="button icon">
-                            CODE <i class="fab fa-github"></i>
-                        </a>
+                        <a href="https://arxiv.org/abs/2408.08152" target="_blank" class="button icon">Paper</a>
+                        <a href="https://openreview.net/forum?id=iOeoGeennC" target="_blank" class="button icon">OpenReview</a>
+                        <a href="#" target="_blank" class="button icon">Code</a>
                     </div>
+                    <div class="publication-venue">ICLR 2025</div>
                 </div>
             </div>
         </div>
 
         <!-- Publication 3 -->
         <div class="publication-item">
-            <div class="publication-authors">
-                ByteDance Seed Team
+            <div class="publication-image">
+                <img src="assets/figures/formal-math-result.png" alt="Formal Math">
             </div>
-            <div class="publication-venue">
-                ArXiv Preprint
-            </div>
-            <h2>Solving Formal Math Problems by Decomposition and Iterative Reflection</h2>
-            
-            <div class="publication-content">
-                <div class="publication-image">
-                    <img src="assets/figures/formal-math-result.png" 
-                        alt="Formal Math Results">
-                </div>
-                
-                <div class="publication-details">
-                    <p>
-                        </strong> An agent-based training-free framework that enables general-purpose Large Language Models (gLLMs) to solve complex formal proofs in Lean 4.
-                    </p>
-                    
+            <div class="publication-details">
+                <h2>Solving Formal Math Problems by Decomposition and Iterative Reflection</h2>
+                <div class="publication-authors">ByteDance Seed Team</div>
+                <p>Training-free agent framework enabling general-purpose LLMs to solve complex formal proofs in Lean 4.</p>
+                <div class="publication-bottom">
                     <div class="publication-buttons">
-                        <a href="https://arxiv.org/abs/2507.15225" target="_blank" class="button icon">
-                            PAPER <i class="fas fa-file-alt"></i>
-                        </a>
-                        <a href="#" target="_blank" class="button icon">
-                            CODE <i class="fab fa-github"></i>
-                        </a>
+                        <a href="https://arxiv.org/abs/2507.15225" target="_blank" class="button icon">Paper</a>
+                        <a href="#" target="_blank" class="button icon">Code</a>
                     </div>
+                    <div class="publication-venue">ArXiv Preprint, 2025</div>
                 </div>
             </div>
         </div>
 
-        <h1>Professional Experience</h1>
+        <h2 class="section-title" id="experience">Professional Experience</h2>
         
         <!-- Experience Timeline -->
         <div class="experience-timeline">
@@ -649,7 +755,7 @@
         </div>
 
         <!-- Education -->
-        <h1>Education</h1>
+        <h2 class="section-title" id="education">Education</h2>
         
         <div class="education-card">
             <div class="education-logo">
@@ -668,30 +774,39 @@
             </div>
         </div>
 
-        <!-- Teaching & Service -->
-        <h1>Academia Service</h1>
-        
-        <h3>Teaching Assistant</h3>
-        <ul class="service-list">
-            <li><strong><a href="https://sites.google.com/view/sorrachai/teaching?authuser=0" target="_blank">Formalizing Analysis of Algorithms </a></strong> - ETH Zürich (Course, Fall 2025)</li>
-            <li><strong><a href="https://ins.sjtu.edu.cn/conferences/2694" target="_blank">AI4Math: Lean 4 and Formal Mathematics</a></strong> - Shanghai Jiaotong University (Jul. 2025)</li>
-            <li><strong><a href="http://conference.bicmr.pku.edu.cn/meeting/index?id=119" target="_blank">AI For Math: Formalization Mathematics Theories and Proofs</a></strong> - BICMR, Peking University (Jun. 2024, Jan. 2024)</li>
-        </ul>
+        <!-- Academic Service -->
+        <h2 class="section-title" id="service">Academic Service</h2>
 
-        <h3>Invited Talks</h3>
+        <h3>Program Chair</h3>
         <ul class="service-list">
-            <li><strong>Verifiable Theorem Proving with Large Language Models</strong> - Xi'an Jiaotong-Liverpool University (Dec. 2025 )</li>
-            <li><strong>AI for Theoretical Computer Science in Lean</strong> -  ETH Zürich (Aug. 2025 )</li>
-            <li><strong>Frontier of Formal Theorem Proving with LLMs</strong> - Xiamen University (Dec. 2024)</li>
+            <li>3rd AI4Math Workshop @ ICML 2026</li>
         </ul>
-
+        <h3>Area Chair</h3>
+        <ul class="service-list">
+            <li>ACL 2026</li>
+        </ul>
         <h3>Conference Reviewer</h3>
         <ul class="service-list">
             <li>ICLR 2026</li>
             <li>ACL 2025</li>
             <li>2nd AI4Math Workshop @ ICML 2025</li>
         </ul>
+        <h3>Teaching Assistant</h3>
+        <ul class="service-list">
+            <li><strong><a href="https://sites.google.com/view/sorrachai/teaching?authuser=0" target="_blank">Formalizing Analysis of Algorithms</a></strong> - ETH Zürich (Course, Fall 2025)</li>
+            <li><strong><a href="https://ins.sjtu.edu.cn/conferences/2694" target="_blank">AI4Math: Lean 4 and Formal Mathematics</a></strong> - Shanghai Jiaotong University (Jul. 2025)</li>
+            <li><strong><a href="http://conference.bicmr.pku.edu.cn/meeting/index?id=119" target="_blank">AI For Math: Formalization Mathematics Theories and Proofs</a></strong> - BICMR, Peking University (Jun. 2024, Jan. 2024)</li>
+        </ul>
 
+        <!-- Engagements -->
+        <h2 class="section-title" id="engagements">Engagements</h2>
+
+        <h3>Invited Talks</h3>
+        <ul class="service-list">
+            <li><strong>Verifiable Theorem Proving with Large Language Models</strong> - Xi'an Jiaotong-Liverpool University (Dec. 2025)</li>
+            <li><strong>AI for Theoretical Computer Science in Lean</strong> - ETH Zürich (Aug. 2025)</li>
+            <li><strong>Frontier of Formal Theorem Proving with LLMs</strong> - Xiamen University (Dec. 2024)</li>
+        </ul>
         <h3>Workshops</h3>
         <ul class="service-list">
             <li><a href="https://leanprover-community.github.io/itp-2025-lean-workshop/" target="_blank">ITP 2025 Lean Workshop</a> - Reykjavic University (Oct. 2025)</li>
@@ -701,17 +816,19 @@
         </ul>
 
         <!-- Contact -->
-        <h1>Contact</h1>
-        <p class="text">
-            Feel free to reach out to me via email at <a href="mailto:haocheng.wang@inf.ethz.ch">haocheng.wang [at] inf.ethz.ch</a> or connect with me on <a href="https://github.com/hcWang942" target="_blank">GitHub</a>.
-        </p>
-    </div>
-    <!-- Visitor Map -->
-    <div style="padding: 3vh 0; background-color: #f8f8f8;">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 1.1em; margin-bottom: 2vh; font-weight: 600;">Visitor Map</h2>
-            <div style="max-width: 700px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: white;">
-                <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=a"></script>
+        <h2 class="section-title" id="contact">Contact</h2>
+        <div style="display: flex; align-items: flex-start; gap: 32px; flex-wrap: wrap;">
+            <div style="flex: 6 1 0; min-width: 200px;">
+                <p class="text">Feel free to reach out to me:</p>
+                <p class="text"><i class="fas fa-envelope" style="width:16px;"></i> haocheng.wang [at] inf.ethz.ch</p>
+                <p class="text"><i class="fas fa-envelope" style="width:16px;"></i> hcwang942 [at] gmail.com</p>
+                <p class="text"><i class="fas fa-map-marker-alt" style="width:16px;"></i> OAT Z28, Andreasstrasse 5, Zürich</p>
+            </div>
+            <div style="flex: 4 1 0; min-width: 160px;">
+                <p style="font-size: 0.75em; color: #999; margin: 0 0 6px 0;">Visitor Map</p>
+                <div style="border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: white; width: 100%;">
+                    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=a"></script>
+                </div>
             </div>
         </div>
     </div>
@@ -719,14 +836,27 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>
-                © 2025 Haocheng Wang. Last updated: November 2025.
-            </p>
-        </div>    
+            <p style="margin: 0;">© 2026 Haocheng Wang. Last updated: April 2026.</p>
+        </div>
     </footer>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="assets/scripts/main.js"></script>    
+    <script src="assets/scripts/main.js"></script>
+    <script>
+        // Navbar: transparent gray at top, white when scrolled
+        (function() {
+            var nav = document.querySelector('.top-nav');
+            function updateNav() {
+                if (window.scrollY > 80) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            }
+            window.addEventListener('scroll', updateNav, { passive: true });
+            updateNav();
+        })();
+    </script>
 </body>
 </html>
