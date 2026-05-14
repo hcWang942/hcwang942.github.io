@@ -21,7 +21,8 @@
     <!-- Preconnect & preload visitor map (eager, parallel with page load) -->
     <link rel="preconnect" href="https://mapmyvisitors.com" crossorigin>
     <link rel="dns-prefetch" href="https://mapmyvisitors.com">
-    <link rel="preload" as="script" href="https://mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=a">
+    <link rel="preload" as="script" href="https://mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=300">
+    <link rel="preload" as="image" href="https://mapmyvisitors.com/generated_content/backs/bg-w_300-cl_ffffff.png">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
@@ -1015,7 +1016,18 @@
             <div style="flex: 4 1 0; min-width: 160px;">
                 <p style="font-size: 0.75em; color: #999; margin: 0 0 6px 0;">Visitor Map</p>
                 <div style="border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: white; width: 100%;">
-                    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=a"></script>
+                    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=300"></script>
+                    <script>
+                        (function() {
+                            var tries = 0;
+                            function fixLink() {
+                                var a = document.getElementById('mapmyvisitors-widget');
+                                if (a) { a.href = 'https://mapmyvisitors.com/web/1c0vd'; return; }
+                                if (tries++ < 60) setTimeout(fixLink, 100);
+                            }
+                            fixLink();
+                        })();
+                    </script>
                 </div>
             </div>
         </div>
