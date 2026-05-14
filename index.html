@@ -489,6 +489,33 @@
             scroll-margin-top: 50px;
         }
 
+        /* Contact section: two-column on desktop, contact left, map right */
+        .contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 32px;
+        }
+        .contact-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .contact-info p {
+            font-size: 0.9em;
+            text-align: left !important;
+            line-height: 1.6;
+            margin: 0 0 4px 0;
+        }
+        .visitor-map-wrap {
+            flex-shrink: 0;
+        }
+
+        /* Force visitor map to use local bg image (3rd-party PNG sometimes fails) */
+        .mapmyvisitors-map {
+            background-image: url("assets/figures/visitor-map-bg.png") !important;
+            background-size: 100% 100% !important;
+            background-repeat: no-repeat !important;
+        }
+
         /* Engagements - icon on h3, clean rows below */
         .engagement-heading {
             display: flex;
@@ -662,6 +689,76 @@
             .education-logo img {
                 width: 50px;
                 height: 50px;
+            }
+
+            /* Tighter container padding on mobile */
+            div.container.blog.main {
+                padding-left: 16px !important;
+                padding-right: 16px !important;
+            }
+            div.container.blog#first-content .blog-intro {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+
+            /* News table: smaller date column, smaller font, tighter */
+            #news + div table td:first-child,
+            #news ~ div table td:first-child {
+                width: 80px !important;
+                font-size: 0.85em;
+            }
+            #news ~ div table td {
+                font-size: 0.92em;
+            }
+
+            /* Section title slightly smaller */
+            .main h2.section-title {
+                font-size: 1.3em;
+                margin-top: 16px;
+                margin-bottom: 8px;
+            }
+
+            /* About / body text: tighter line-height */
+            div.container.blog.main p.text {
+                line-height: 1.55 !important;
+            }
+
+            /* Engagements: tighter spacing, smaller venue */
+            .engagement-item {
+                padding: 8px 0;
+            }
+            .engagement-title {
+                font-size: 0.9em;
+            }
+            .engagement-venue {
+                font-size: 0.8em;
+            }
+            .engagement-date {
+                font-size: 0.7em;
+                padding: 2px 8px;
+            }
+
+            /* Contact: stack vertically on mobile, center map only */
+            .contact-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            .contact-info {
+                align-self: stretch;
+            }
+            .visitor-map-wrap,
+            .visitor-map-wrap p {
+                text-align: center !important;
+            }
+            #mapmyvisitors-widget {
+                max-width: 100% !important;
+            }
+
+            /* Service lists: tighter line-height */
+            .service-list li {
+                line-height: 1.55;
+                margin-bottom: 2px;
             }
         }
     </style>
@@ -1006,30 +1103,30 @@
 
         <!-- Contact -->
         <h2 class="section-title" id="contact">Contact</h2>
-        <div style="display: flex; align-items: flex-start; gap: 32px; flex-wrap: wrap;">
-            <div style="flex: 6 1 0; min-width: 200px;">
-                <p class="text">Feel free to reach out to me:</p>
-                <p class="text"><i class="fas fa-envelope" style="width:16px;"></i> haocheng.wang [at] inf.ethz.ch</p>
-                <p class="text"><i class="fas fa-envelope" style="width:16px;"></i> hcwang942 [at] gmail.com</p>
-                <p class="text"><i class="fas fa-map-marker-alt" style="width:16px;"></i> OAT Z28, Andreasstrasse 5, Zürich</p>
+        <div class="contact-row">
+        <div class="contact-info">
+            <p>Feel free to reach out to me:</p>
+            <p><i class="fas fa-envelope" style="width:16px;"></i> haocheng.wang [at] inf.ethz.ch</p>
+            <p><i class="fas fa-envelope" style="width:16px;"></i> hcwang942 [at] gmail.com</p>
+            <p><i class="fas fa-map-marker-alt" style="width:16px;"></i> OAT Z28, Andreasstrasse 5, Zürich</p>
+        </div>
+        <div class="visitor-map-wrap">
+            <p style="font-size: 0.75em; color: #999; margin: 0 0 6px 0;">Visitor Map</p>
+            <div style="border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: white; display: inline-block;">
+                <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=300"></script>
+                <script>
+                    (function() {
+                        var tries = 0;
+                        function fixLink() {
+                            var a = document.getElementById('mapmyvisitors-widget');
+                            if (a) { a.href = 'https://mapmyvisitors.com/web/1c0vd'; return; }
+                            if (tries++ < 60) setTimeout(fixLink, 100);
+                        }
+                        fixLink();
+                    })();
+                </script>
             </div>
-            <div style="flex: 4 1 0; min-width: 160px;">
-                <p style="font-size: 0.75em; color: #999; margin: 0 0 6px 0;">Visitor Map</p>
-                <div style="border: 1px solid #ddd; border-radius: 6px; overflow: hidden; background: white; width: 100%;">
-                    <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=300"></script>
-                    <script>
-                        (function() {
-                            var tries = 0;
-                            function fixLink() {
-                                var a = document.getElementById('mapmyvisitors-widget');
-                                if (a) { a.href = 'https://mapmyvisitors.com/web/1c0vd'; return; }
-                                if (tries++ < 60) setTimeout(fixLink, 100);
-                            }
-                            fixLink();
-                        })();
-                    </script>
-                </div>
-            </div>
+        </div>
         </div>
     </div>
 
