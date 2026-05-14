@@ -18,6 +18,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:description" content="Haocheng Wang">
     
+    <!-- Preconnect & preload visitor map (eager, parallel with page load) -->
+    <link rel="preconnect" href="https://mapmyvisitors.com" crossorigin>
+    <link rel="dns-prefetch" href="https://mapmyvisitors.com">
+    <link rel="preload" as="script" href="https://mapmyvisitors.com/map.js?d=3N-3Rr5shrAwMpgY9wbzbqqWz60Tg29hDGMW8iZcf-M&cl=ffffff&w=a">
+
     <!-- Stylesheets -->
     <link rel="stylesheet" type="text/css" media="all" href="assets/stylesheets/main_free.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/foundation.min.css">
@@ -483,6 +488,74 @@
             scroll-margin-top: 50px;
         }
 
+        /* Engagements - icon on h3, clean rows below */
+        .engagement-heading {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .engagement-heading i {
+            color: #0073b1;
+            font-size: 0.95em;
+        }
+        .engagement-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 0 8px 0 !important;
+        }
+        .engagement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        .engagement-item:first-child {
+            border-top: 1px solid #e8e8e8;
+        }
+        .engagement-body {
+            flex: 1;
+            min-width: 0;
+        }
+        .engagement-title {
+            font-size: 0.95em;
+            font-weight: 400;
+            color: #111;
+            line-height: 1.4;
+            margin: 0;
+        }
+        .engagement-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .engagement-venue {
+            font-size: 0.85em;
+            color: #666;
+            line-height: 1.4;
+            white-space: nowrap;
+        }
+        .engagement-venue i {
+            margin-right: 4px;
+            color: #999;
+        }
+        .engagement-date {
+            font-size: 0.75em;
+            font-weight: 600;
+            color: #0073b1;
+            background: #eaf2f8;
+            border-radius: 12px;
+            padding: 3px 10px;
+            white-space: nowrap;
+        }
+        @media screen and (max-width: 700px) {
+            .engagement-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .engagement-meta { margin-top: 0; }
+            .engagement-venue { white-space: normal; }
+        }
+
         /* Mobile responsive fixes */
         @media screen and (max-width: 768px) {
             /* Navbar: horizontally scrollable, no wrapping */
@@ -666,11 +739,14 @@
         <h2 class="section-title" id="news">News</h2>
         <div style="max-height: 180px; overflow-y: auto; padding-right: 4px;">
         <table style="width:100%; border-collapse: collapse; font-size: 1em; line-height: 1.7;">
-            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 6px;">Our <strong>3rd AI4Math Workshop</strong> at ICML 2026 has been accepted!</td></tr>
-            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Jan. 2026</td><td style="vertical-align:top; padding-bottom: 6px;">Started as a Ph.D. student at <strong>HKUST(GZ)</strong>, DSA Thrust, supervised by Prof. Zhijiang Guo.</td></tr>
-            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 6px;">Joined <strong>ETH Zürich</strong> (D-INFK) as a Visiting Researcher, working with Prof. Rasmus Kyng and Dr. Sorrachai Yingchareonthawornchai.</td></tr>
-            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 6px 0; white-space:nowrap;">Jan. 2025</td><td style="vertical-align:top; padding-bottom: 6px;">Joined <strong>ByteDance Seed</strong> as a Student Researcher.</td></tr>
-            <tr><td style="width:130px; color:#888; vertical-align:top; padding: 0 12px 0 0; white-space:nowrap;">Jun. 2024</td><td style="vertical-align:top;">Joined <strong>DeepSeek AI</strong> as a Student Researcher.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Our <strong><a href="https://ai4math2026.github.io/" target="_blank">3rd AI4Math Workshop</a></strong> at ICML 2026 has been accepted!</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Started as a Ph.D. student at <strong>DSA Thrust, HKUST(GZ)</strong>, supervised by Prof. Zhijiang Guo.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Dec. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Gave an invited talk on <em>Verifiable Theorem Proving with Large Language Models</em> at <strong>XJTLU</strong>.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Gave an invited talk on <em>AI for Theoretical Computer Science in Lean</em> at <strong>ETHz</strong>.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <strong>ETHz</strong> (D-INFK) as a Visiting Researcher, working with Prof. Rasmus Kyng and Dr. Sorrachai Yingchareonthawornchai.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <strong>ByteDance Seed</strong> as a Student Researcher.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Dec. 2024</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Gave an invited talk on <em>Frontier of Formal Theorem Proving with LLMs</em> at <strong>XMU</strong>.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 0 0; white-space:nowrap;">Jun. 2024</td><td style="vertical-align:top;">Joined <strong>DeepSeek AI</strong> as a Student Researcher.</td></tr>
         </table>
         </div>
 
@@ -856,18 +932,75 @@
         <!-- Engagements -->
         <h2 class="section-title" id="engagements">Engagements</h2>
 
-        <h3>Invited Talks</h3>
-        <ul class="service-list">
-            <li><strong>Verifiable Theorem Proving with Large Language Models</strong> - Xi'an Jiaotong-Liverpool University (Dec. 2025)</li>
-            <li><strong>AI for Theoretical Computer Science in Lean</strong> - ETH Zürich (Aug. 2025)</li>
-            <li><strong>Frontier of Formal Theorem Proving with LLMs</strong> - Xiamen University (Dec. 2024)</li>
+        <h3 class="engagement-heading"><i class="fas fa-comments"></i>Invited Talks</h3>
+        <ul class="engagement-list">
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title">Verifiable Theorem Proving with Large Language Models</div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>XJTLU</span>
+                    <span class="engagement-date">Dec. 2025</span>
+                </div>
+            </li>
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title">AI for Theoretical Computer Science in Lean</div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>ETH Zürich</span>
+                    <span class="engagement-date">Aug. 2025</span>
+                </div>
+            </li>
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title">Frontier of Formal Theorem Proving with LLMs</div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>Xiamen University</span>
+                    <span class="engagement-date">Dec. 2024</span>
+                </div>
+            </li>
         </ul>
-        <h3>Workshops</h3>
-        <ul class="service-list">
-            <li><a href="https://leanprover-community.github.io/itp-2025-lean-workshop/" target="_blank">ITP 2025 Lean Workshop</a> - Reykjavic University (Oct. 2025)</li>
-            <li><a href="https://icml.cc/virtual/2025/workshop/39979" target="_blank">2nd AI for Math Workshop @ ICML 2025</a> - HKUST(GZ) (Aug. 2025)</li>
-            <li><a href="http://conference.bicmr.pku.edu.cn/meeting/index?id=119&identity=443" target="_blank">AI for Mathematics Workshop on Lean</a> - Peking University (Aug. 2024)</li>
-            <li><a href="https://ims.nus.edu.sg/events/formalproofslean/" target="_blank">Workshop on Formal Proofs and Lean</a> - NUS (Apr. 2024)</li>
+
+        <h3 class="engagement-heading"><i class="fas fa-chalkboard-user"></i>Workshops</h3>
+        <ul class="engagement-list">
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title"><a href="https://leanprover-community.github.io/itp-2025-lean-workshop/" target="_blank" style="color:#111;">ITP 2025 Lean Workshop</a></div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>Reykjavic University</span>
+                    <span class="engagement-date">Oct. 2025</span>
+                </div>
+            </li>
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title"><a href="https://icml.cc/virtual/2025/workshop/39979" target="_blank" style="color:#111;">2nd AI for Math Workshop @ ICML 2025</a></div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>HKUST(GZ)</span>
+                    <span class="engagement-date">Aug. 2025</span>
+                </div>
+            </li>
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title"><a href="http://conference.bicmr.pku.edu.cn/meeting/index?id=119&identity=443" target="_blank" style="color:#111;">AI for Mathematics Workshop on Lean</a></div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>Peking University</span>
+                    <span class="engagement-date">Aug. 2024</span>
+                </div>
+            </li>
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title"><a href="https://ims.nus.edu.sg/events/formalproofslean/" target="_blank" style="color:#111;">Workshop on Formal Proofs and Lean</a></div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>NUS</span>
+                    <span class="engagement-date">Apr. 2024</span>
+                </div>
+            </li>
         </ul>
 
         <!-- Contact -->
