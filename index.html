@@ -78,7 +78,22 @@
             margin-top: 20px;
             margin-bottom: 10px;
             color: #111;
+            position: relative;
+            transition: color 0.3s ease, padding-left 0.3s ease;
         }
+        .main h2.section-title:hover {
+            color: #0073b1;
+            padding-left: 6px;
+        }
+        .main h2.section-title::after {
+            content: "#";
+            color: #cbd5e0;
+            margin-left: 0.45rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-weight: 400;
+        }
+        .main h2.section-title:hover::after { opacity: 1; }
 
         h3 {
             font-size: 1em;
@@ -161,7 +176,7 @@
         .publication-item {
             display: flex;
             gap: 20px;
-            align-items: flex-start;
+            align-items: stretch;
             padding: 16px 0;
             border-bottom: 1px solid #e8e8e8;
             margin-bottom: 0;
@@ -177,9 +192,20 @@
         .publication-image img {
             width: 100%;
             height: auto;
+            display: block;
             border: 1px solid #ddd;
             border-radius: 4px;
-            display: block;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 0.45s ease,
+                        border-color 0.3s ease;
+        }
+        .publication-image img:hover {
+            transform: scale(2);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+            border-color: #0073b1;
+            z-index: 50;
         }
 
         .publication-details {
@@ -187,48 +213,61 @@
             min-width: 0;
             padding-top: 0 !important;
             margin-top: 0 !important;
-            align-self: flex-start !important;
+            display: flex;
+            flex-direction: column;
         }
         .publication-bottom {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: space-between;
-            margin-top: 6px;
+            margin-top: auto;
         }
         div.container.blog.main .publication-details > * {
             margin-top: 0 !important;
             padding-top: 0 !important;
         }
         .publication-details h2 {
-            font-size: 0.9em;
+            font-size: 0.72em !important;
             font-weight: 700;
             color: #111;
             margin: 0 0 4px 0 !important;
             padding: 0 !important;
             line-height: 1.35;
         }
+        .publication-details h2 a {
+            font-size: inherit;
+            color: inherit;
+            transition: color 0.2s ease, text-decoration-color 0.2s ease;
+        }
+        .publication-details h2 a:hover {
+            color: #0073b1;
+            text-decoration: underline !important;
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 3px;
+        }
         .publication-authors {
-            font-size: 0.7em;
+            font-size: 0.62em;
             color: #555;
             margin: 0 0 3px 0 !important;
             padding: 0 !important;
             line-height: 1.4;
         }
         .publication-venue {
-            font-size: 0.82em;
+            font-size: 0.72em;
             font-weight: 700;
             color: #0073b1;
-            margin: 0 0 6px 0 !important;
+            margin: 0 !important;
             padding: 0 !important;
+            line-height: 1;
         }
         .publication-details p {
-            font-size: 0.8em;
+            font-size: 0.72em;
             color: #444;
             margin: 0 0 6px 0;
             line-height: 1.5;
         }
         .publication-buttons {
-            margin-top: 6px;
+            margin-top: 0;
         }
         .publication-buttons .button.icon {
             display: inline-block;
@@ -404,7 +443,7 @@
         /* Override base theme's aggressive vw-based padding */
         /* Max-width + auto margin to center content on all screen sizes */
         div.container.blog.main {
-            max-width: 900px !important;
+            max-width: 1080px !important;
             margin-left: auto !important;
             margin-right: auto !important;
             padding-left: 24px !important;
@@ -415,7 +454,7 @@
             padding-right: 0 !important;
         }
         div.container.blog#first-content .blog-intro {
-            max-width: 860px;
+            max-width: 1040px;
             margin-left: auto;
             margin-right: auto;
             padding-left: 40px;
@@ -437,6 +476,15 @@
         div.container.blog.main ul:not(.service-list) {
             list-style: disc;
             padding-left: 1.4em;
+        }
+        div.container.blog.main ul:not(.service-list) li {
+            font-size: 0.95em;
+            line-height: 1.55;
+            margin-bottom: 6px;
+        }
+        div.container.blog.main p.text {
+            font-size: 0.95em;
+            line-height: 1.55;
         }
 
         /* Reduce About Me paragraph spacing */
@@ -464,7 +512,7 @@
             list-style: none !important;
             padding: 0 !important;
             margin: 0 auto !important;
-            max-width: 900px;
+            max-width: 1080px;
             gap: 0;
             justify-content: center;
         }
@@ -793,7 +841,7 @@
                                 日拱一卒 · Keep pounding the rock
                             </p>
                             <div class="link">
-                                <span style="cursor:default;"><i class="fas fa-envelope"></i> Email</span>
+                                <a href="#contact"><i class="fas fa-envelope"></i> Email</a>
                                 <a href="https://github.com/hcWang942" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                                 <a href="https://scholar.google.com/citations?user=HLJz8yIAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
                                 <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> CV</a>
@@ -828,9 +876,9 @@
             My research focuses on:
         </p>
         <ul>
-            <li><strong>Formal Mathematical Reasoning:</strong> Developing LLMs for automated theorem proving through Supervised Fine-Tuning and Reinforcement Learning approaches</li>
-            <li><strong>Autoformalization:</strong> Building multimodal agents and pipelines to translate natural language mathematics into formal proofs</li>
-            <li><strong>AI for Mathematics:</strong> Creating benchmarks, tools, and methods to advance AI's capability in mathematical reasoning</li>
+            <li><strong>Formal theorem proving.</strong> Scaling LLM-based provers, with a focus on search, subgoal decomposition, and proof-checker feedback.</li>
+            <li><strong>Autoformalization.</strong> Translating natural language mathematics into formal statements, and diagnosing where the translation drifts from intent.</li>
+            <li><strong>Evaluation of mathematical reasoning.</strong> Benchmarks and diagnostic protocols that judge outputs by their mathematical content rather than surface-level matching.</li>
         </ul>
 
         <!-- News -->
@@ -850,7 +898,27 @@
 
         <!-- Selected Publications -->
         <h2 class="section-title" id="projects">Featured Projects</h2>
-        
+
+        <!-- FormalRx -->
+        <div class="publication-item">
+            <div class="publication-image">
+                <img src="assets/figures/formalrx-result.png" alt="FormalRx">
+            </div>
+            <div class="publication-details">
+                <h2><a href="/formalrx/" style="color:inherit; text-decoration:none;">FormalRx: Rectify and eXamine Semantic Failures in Autoformalization</a></h2>
+                <div class="publication-authors"><u>Haocheng Wang</u>*, Baiyu Huang*, Yingjia Wan*, Xiao Zhu, Xiaoyang Liu, Yinya Huang&dagger;, Zhijiang Guo&dagger;</div>
+                <p>A diagnostic evaluation framework for autoformalization with a 28-class SCI Error Taxonomy. FormalRx-8B jointly performs verdict, error categorization, localization, and correction in one forward pass.</p>
+                <div class="publication-bottom">
+                    <div class="publication-buttons">
+                        <a href="/formalrx/" class="button icon">Page</a>
+                        <a href="https://huggingface.co/datasets/LARK-Lab/FormalRx-Test" target="_blank" class="button icon">Dataset</a>
+                        <a href="https://www.codabench.org/competitions/16104/" target="_blank" class="button icon">Challenge</a>
+                    </div>
+                    <div class="publication-venue">ICML 2026</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Publication 1 -->
         <div class="publication-item">
             <div class="publication-image">
@@ -1119,9 +1187,9 @@
         <div class="contact-row">
         <div class="contact-info">
             <p>Feel free to reach out to me:</p>
-            <p><i class="fas fa-envelope" style="width:16px;"></i> haocheng.wang [at] inf.ethz.ch</p>
-            <p><i class="fas fa-envelope" style="width:16px;"></i> hcwang942 [at] gmail.com</p>
-            <p><i class="fas fa-map-marker-alt" style="width:16px;"></i> OAT Z28, Andreasstrasse 5, Zürich</p>
+            <p><i class="fas fa-envelope" style="width:16px;"></i> haocheng [dot] wang [at] inf [dot] ethz [dot] ch</p>
+            <p><i class="fas fa-envelope" style="width:16px;"></i> hcwang942 [at] gmail [dot] com</p>
+            <p><i class="fas fa-map-marker-alt" style="width:16px;"></i> OAT Z29, Andreasstrasse 5, Zürich</p>
         </div>
         <div class="visitor-map-wrap">
             <p style="font-size: 0.75em; color: #999; margin: 0 0 6px 0;">Visitor Map</p>

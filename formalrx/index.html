@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="FormalRx: Rectify and eXamine Semantic Failures in Autoformalization. A diagnostic evaluation framework for autoformalization with the SCI Error Taxonomy.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FormalRx: Rectify and eXamine Semantic Failures in Autoformalization</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FormalRx: Rectify and eXamine Semantic Failures in Autoformalization"/>
+  <meta property="og:description" content="A diagnostic evaluation framework for autoformalization with the SCI Error Taxonomy."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="static/images/main.png"/>
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🩺&lt;/text&gt;&lt;/svg&gt;">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .publication-title {
+      font-weight: 700;
+      font-size: 2.2rem;
+      line-height: 1.25;
+    }
+    .author-block { margin-right: 0.6rem; font-size: 1.05rem; }
+    .author-block sup { color: #555; }
+    .affil-block { font-size: 0.9rem; color: #555; margin-top: 0.4rem; }
+    .corr { font-size: 0.85rem; color: #777; margin-top: 0.3rem; }
+    .hero.is-light { background-color: #fafafa; }
+    .hero-body { padding: 3rem 1.5rem 1.5rem; }
+    .section { padding: 2.2rem 1.5rem; }
+    .content h2.title {
+      font-size: 1.5rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      transition: border-color 0.3s ease, color 0.3s ease, padding-left 0.3s ease;
+    }
+    .content h2.title::before {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 2px;
+      background: #4a6fa5;
+      transition: width 0.35s ease;
+    }
+    .content h2.title:hover {
+      color: #2c4868;
+      padding-left: 0.4rem;
+    }
+    .content h2.title:hover::before { width: 60px; }
+    .content h2.title::after {
+      content: "#";
+      color: #cbd5e0;
+      margin-left: 0.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      font-weight: 400;
+    }
+    .content h2.title:hover::after { opacity: 1; }
+    .section { transition: background-color 0.4s ease; }
+    .num-card { transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; }
+    .num-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border-color: #4a6fa5;
+    }
+    table.results tr:not(.group-header):not(.ours) { transition: background-color 0.15s ease; }
+    table.results tr:not(.group-header):not(.ours):hover { background-color: #f5f7fb; }
+    .publication-banner img { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .publication-banner img:hover { transform: scale(1.01); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .publication-banner { text-align: center; }
+    .publication-banner img { max-width: 100%; height: auto; }
+    .figure-caption { font-size: 0.9rem; color: #555; margin-top: 0.6rem; text-align: left; }
+    .figure-caption .label { font-weight: 700; color: #2c3e50; }
+    .button.is-link {
+      background-color: #363636; color: white; border-radius: 999px; padding: 0 1.2rem;
+    }
+    .button.is-link:hover { background-color: #555; }
+    .publication-links .button { margin: 0.25rem; }
+    .key-box {
+      background: #f5f7fb; border-left: 4px solid #4a6fa5; padding: 1rem 1.2rem;
+      border-radius: 4px; margin: 1rem 0;
+    }
+    .num-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.8rem; margin: 1rem 0;
+    }
+    .num-card {
+      text-align: center; padding: 0.8rem; background: #fff; border: 1px solid #e5e7eb;
+      border-radius: 8px;
+    }
+    .num-card .v { font-size: 1.8rem; font-weight: 700; color: #2c3e50; }
+    .num-card .l { font-size: 0.85rem; color: #555; margin-top: 0.2rem; }
+    table.results {
+      width: 100%; border-collapse: collapse; font-size: 0.92rem;
+      margin: 1rem 0; background: white;
+    }
+    table.results { table-layout: auto; }
+    table.results th, table.results td {
+      padding: 0.55rem 0.7rem;
+      text-align: center !important;
+      border-bottom: 1px solid #e5e7eb;
+      font-variant-numeric: tabular-nums;
+      vertical-align: middle;
+    }
+    table.results thead th {
+      background: #f5f7fb; color: #2c3e50; font-weight: 600;
+      border-bottom: 2px solid #cbd5e0;
+    }
+    table.results td:first-child, table.results th:first-child {
+      text-align: left !important; font-weight: 500;
+    }
+    table.results tr.group-header td {
+      background: #f9fafb; font-style: italic; color: #6b7280;
+      font-size: 0.85rem; text-align: left; padding: 0.4rem 0.7rem;
+    }
+    table.results tr.ours td { background: #ecfdf5; font-weight: 700; }
+    table.results tr.ours td:first-child { color: #047857; }
+    table.results .best { text-decoration: underline; }
+    table.results .winner { font-weight: 700; }
+    pre.bibtex {
+      background: #f5f5f5; padding: 1rem; border-radius: 4px;
+      font-size: 0.85rem; overflow-x: auto;
+    }
+    footer { padding: 2rem 1rem; text-align: center; color: #888; font-size: 0.85rem; background: #fafafa; }
+
+    /* Sticky section headers */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background: white;
+      z-index: 30;
+      padding-top: 0.6rem !important;
+      margin-top: 0;
+    }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 0.5rem; }
+
+    /* TOC sidebar */
+    .toc-sidebar {
+      position: fixed;
+      left: 1.4rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 170px;
+      font-size: 0.84rem;
+      z-index: 100;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .toc-sidebar .toc-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      padding-left: 0.8rem;
+    }
+    .toc-sidebar ul { list-style: none; padding: 0; margin: 0; }
+    .toc-sidebar li {
+      border-left: 2px solid #e5e7eb;
+      transition: border-left-color 0.25s ease, padding-left 0.25s ease;
+    }
+    .toc-sidebar li a {
+      display: block;
+      padding: 0.32rem 0 0.32rem 0.8rem;
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .toc-sidebar li a:hover { color: #4a6fa5; }
+    .toc-sidebar li.active {
+      border-left-color: #4a6fa5;
+    }
+    .toc-sidebar li.active a {
+      color: #2c4868;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1280px) {
+      .toc-sidebar { display: none; }
+    }
+
+    /* Disabled / placeholder buttons (link not yet available) */
+    .button.is-link.is-disabled {
+      background-color: #9ca3af !important;
+      color: #f3f4f6 !important;
+      cursor: not-allowed;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOC SIDEBAR -->
+<nav class="toc-sidebar" aria-label="Table of contents">
+  <div class="toc-label">On this page</div>
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#challenge">Challenge</a></li>
+    <li><a href="#abstract">Abstract</a></li>
+    <li><a href="#sci">SCI Taxonomy</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#dataset">Dataset</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#bibtex">BibTeX</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="publication-title">FormalRx: Rectify and eXamine Semantic Failures in Autoformalization</h1>
+          <div class="is-size-5 publication-authors" style="margin-top:1rem;">
+            <span class="author-block">Haocheng Wang<sup>*1,4</sup>,</span>
+            <span class="author-block">Baiyu Huang<sup>*1</sup>,</span>
+            <span class="author-block">Yingjia Wan<sup>*2</sup>,</span>
+            <span class="author-block">Xiao Zhu<sup>1</sup>,</span>
+            <span class="author-block">Xiaoyang Liu<sup>5</sup>,</span>
+            <span class="author-block">Yinya Huang<sup>&dagger;3</sup>,</span>
+            <span class="author-block">Zhijiang Guo<sup>&dagger;1,6</sup></span>
+          </div>
+          <div class="affil-block">
+            <sup>1</sup>HKUST(GZ) &nbsp;
+            <sup>2</sup>UCLA &nbsp;
+            <sup>3</sup>ETH AI Center &nbsp;
+            <sup>4</sup>ETH Z&uuml;rich &nbsp;
+            <sup>5</sup>SJTU &nbsp;
+            <sup>6</sup>HKUST
+          </div>
+          <div class="corr">
+            <sup>*</sup>Equal contribution &nbsp; <sup>&dagger;</sup>Corresponding authors
+          </div>
+          <div class="is-size-6" style="margin-top:0.6rem; color:#888;">ICML 2026</div>
+
+          <!-- Action buttons -->
+          <div class="publication-links" style="margin-top:1.5rem;">
+            <a class="button is-link is-disabled" title="Coming soon">
+              <span class="icon"><i class="ai ai-arxiv"></i></span>
+              <span>arXiv</span>
+            </a>
+            <a class="button is-link is-disabled" title="Coming soon">
+              <span class="icon"><i class="fas fa-file-pdf"></i></span>
+              <span>Paper</span>
+            </a>
+            <a class="button is-link is-disabled" title="Coming soon">
+              <span class="icon"><i class="fab fa-github"></i></span>
+              <span>Code</span>
+            </a>
+            <a href="https://huggingface.co/datasets/LARK-Lab/FormalRx-Test" target="_blank" class="button is-link">
+              <span class="icon"><i class="fas fa-database"></i></span>
+              <span>Dataset</span>
+            </a>
+            <a class="button is-link is-disabled" title="Coming soon">
+              <span class="icon">&#129303;</span>
+              <span>Model</span>
+            </a>
+            <a href="https://www.codabench.org/competitions/16104/" target="_blank" class="button is-link" style="background:#f59e0b;">
+              <span class="icon"><i class="fas fa-flag-checkered"></i></span>
+              <span>ICML 2026 Challenge</span>
+            </a>
+            <a href="#bibtex" class="button is-link">
+              <span class="icon"><i class="fas fa-quote-right"></i></span>
+              <span>BibTeX</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEASER -->
+<section class="section" id="overview" style="padding-top:1rem;">
+  <div class="container is-max-widescreen">
+    <div class="publication-banner">
+      <img src="static/images/main.png" alt="FormalRx overview"/>
+      <p class="figure-caption">
+        <span class="label">Figure 1.</span> An illustrative comparison with prior semantic evaluation methods for autoformalization. On this misaligned candidate, every FL&ndash;FL and NL&ndash;FL baseline either scores it as aligned or confirms only syntactic correctness, whereas <b>FormalRx</b> returns the verdict, error category, error location, and a corrected formal statement.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TL;DR -->
+<section class="section" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <div class="key-box">
+      <strong>TL;DR.</strong> Existing autoformalization evaluators give you a yes/no verdict and stop there &mdash; not useful if you actually want to fix the translation. <b>FormalRx</b> instead returns, in a single forward pass, four things you can act on: a <i>verdict</i>, the specific <i>error type</i> from our 28-class SCI taxonomy, exactly <i>where</i> the error sits, and a <i>corrected</i> Lean statement.
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION -->
+<section class="section" id="challenge" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <div style="background: linear-gradient(135deg, #fff7ed 0%, #fef3c7 100%); border-left: 4px solid #f59e0b; padding: 1.2rem 1.4rem; border-radius: 6px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:1rem;">
+        <div style="flex:1; min-width:280px;">
+          <div style="font-size: 0.85rem; color:#92400e; font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Live &middot; ICML 2026 Workshop Challenge</div>
+          <div style="font-size: 1.3rem; font-weight:700; margin-top:0.3rem; color:#1f2937;">
+            AI4Math @ ICML 2026 &mdash; Track 1: FormalRx
+          </div>
+          <div style="font-size: 0.95rem; color:#4b5563; margin-top:0.5rem;">
+            Semantic Alignment Evaluation for Autoformalization. Built on the SCI Error Taxonomy. Submit your diagnostic model and climb the leaderboard.
+          </div>
+          <div style="font-size: 0.85rem; color:#92400e; margin-top:0.6rem;">
+            <i class="fas fa-calendar-days"></i> <b>Open:</b> May 1 &ndash; June 15, 2026 (AoE) &nbsp; &middot; &nbsp;
+            <i class="fas fa-trophy"></i> <b>Prize pool:</b> $1,000 / $600 / $400 for top 3 teams
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <a href="https://www.codabench.org/competitions/16104/" target="_blank" class="button is-link" style="background:#f59e0b;">
+            <span class="icon"><i class="fas fa-flag-checkered"></i></span>
+            <span>Join Challenge</span>
+          </a>
+          <a href="https://www.codabench.org/competitions/16104/#/results-tab" target="_blank" class="button is-link" style="background:#fff; color:#92400e; border:1px solid #f59e0b;">
+            <span class="icon"><i class="fas fa-ranking-star"></i></span>
+            <span>Leaderboard</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="section" id="abstract" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <h2 class="title sticky-header">Abstract</h2>
+    <p>
+      The veracious semantic alignment in autoformalization is significant for formal mathematical reasoning. However, existing evaluations provide only opaque binary verdicts or scalar scores, offering no interpretable insight into where or why translations fail. This opacity severely limits both human understanding and automated system improvement.
+    </p>
+    <p>
+      To bridge this gap, we introduce <b>FormalRx</b>, a comprehensive diagnostic evaluation framework that transforms autoformalization assessment from black-box judgments into actionable feedback. At its core is the <b>SCI Error Taxonomy</b>, a hierarchical classification scheme decomposing autoformalization errors into 28 distinct categories with strict priority ordering. Building on this taxonomy, FormalRx provides four critical diagnostic capabilities: alignment verdicts, error categorization, error localization, and correction. We instantiate the framework with a diagnostic model <b>FormalRx-8B</b>, trained on 56,287 NL&ndash;FL pairs with fine-grained diagnostic annotations, and release <b>FormalRx-Test</b> as the first fine-grained diagnostic benchmark.
+    </p>
+  </div>
+</section>
+
+<!-- SCI TAXONOMY -->
+<section class="section" id="sci" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <h2 class="title sticky-header">The SCI Error Taxonomy</h2>
+    <p>
+      The <b>SCI</b> taxonomy partitions autoformalization errors into three disjoint, exhaustive dimensions:
+      <b>S</b>emantic, <b>C</b>onstraint, and <b>I</b>mplementation. Location-based catch-all categories ensure
+      exhaustiveness, and a priority ordering resolves cases that match more than one.
+    </p>
+    <div class="publication-banner">
+      <img src="static/images/sci_taxonomy.png" alt="SCI taxonomy" style="max-width:90%;"/>
+      <p class="figure-caption">
+        <span class="label">Figure 2.</span> Overview of the SCI taxonomy. 28 error categories are partitioned into three disjoint, exhaustive dimensions: Semantic (S), Constraint (C), and Implementation (I). Location-based catch-all categories (Premise, Conclusion, Auxiliary Construction) ensure exhaustiveness, and a priority ordering resolves cases that match more than one.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DATA PIPELINE -->
+<section class="section" id="pipeline" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <h2 class="title sticky-header">Data Synthesis Pipeline</h2>
+    <p>
+      We synthesize <b>56,287</b> annotated NL&ndash;FL pairs by taxonomy-guided error injection from 17,825 aligned seed pairs. An LLM agent introduces a targeted error for each applicable SCI category, a second LLM validates and re-tags, and candidates failing Lean compilation or the label check are discarded. Each surviving instance carries full diagnostic metadata: error category, location, reasoning, and corrected statement.
+    </p>
+    <div class="publication-banner">
+      <img src="static/images/data_pipeline.png" alt="Data synthesis pipeline" style="max-width:78%;"/>
+      <p class="figure-caption">
+        <span class="label">Figure 3.</span> Overview of the data synthesis pipeline. From 17k aligned NL&ndash;FL seed pairs, an LLM agent applies taxonomy-guided error injection to produce misaligned candidates together with raw diagnostic labels. A second LLM then validates and re-tags each candidate against the SCI taxonomy; samples failing Lean compilation or the label check are discarded, leaving 56k annotated instances.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DATASET -->
+<section class="section" id="dataset" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <div class="sticky-header" style="display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; border-bottom:2px solid #eee; padding-bottom:0.4rem; margin-bottom:1rem;">
+      <h2 class="title" style="border-bottom:none; padding-bottom:0; margin-bottom:0; flex:1;">FormalRx-Test Dataset</h2>
+      <a href="https://huggingface.co/datasets/LARK-Lab/FormalRx-Test" target="_blank" class="button is-link" style="height:1.7rem; padding:0 0.9rem; font-size:0.88rem; line-height:1.7rem;">
+        <span class="icon" style="font-size:1rem;">&#129303;</span>
+        <span>Browse on Hugging Face</span>
+      </a>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin-bottom:1rem; line-height:1;">
+      <a href="https://huggingface.co/datasets/LARK-Lab/FormalRx-Test" target="_blank" style="display:inline-flex; line-height:0;">
+        <img alt="HF Dataset" height="20" src="https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-LARK--Lab%2FFormalRx--Test-yellow?style=flat-square">
+      </a>
+      <a href="https://huggingface.co/datasets/LARK-Lab/FormalRx-Test" target="_blank" style="display:inline-flex; line-height:0;">
+        <img alt="Downloads" height="20" src="https://img.shields.io/badge/dynamic/json?style=flat-square&label=downloads&query=%24.downloads&url=https%3A%2F%2Fhuggingface.co%2Fapi%2Fdatasets%2FLARK-Lab%2FFormalRx-Test&color=blue">
+      </a>
+      <a href="https://huggingface.co/datasets/LARK-Lab/FormalRx-Test" target="_blank" style="display:inline-flex; line-height:0;">
+        <img alt="Likes" height="20" src="https://img.shields.io/badge/dynamic/json?style=flat-square&label=%E2%9D%A4%EF%B8%8F%20likes&query=%24.likes&url=https%3A%2F%2Fhuggingface.co%2Fapi%2Fdatasets%2FLARK-Lab%2FFormalRx-Test&color=ff69b4">
+      </a>
+      <a href="https://www.codabench.org/competitions/16104/" target="_blank" style="display:inline-flex; line-height:0;">
+        <img alt="ICML 2026 Challenge" height="20" src="https://img.shields.io/badge/ICML%202026-Challenge-orange?style=flat-square">
+      </a>
+      <img alt="License" height="20" src="https://img.shields.io/badge/License-Apache%202.0-green?style=flat-square">
+    </div>
+    <p>
+      We release <b>FormalRx-Test</b> on Hugging Face: 7,030 natural-language / Lean 4 statement pairs annotated under the SCI Error Taxonomy. Each sample carries a natural-language problem, a candidate Lean 4 formalization, and a Lean header required to type-check the candidate.
+    </p>
+
+    <div class="num-grid" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+      <div class="num-card"><div class="v">7,030</div><div class="l">Total samples</div></div>
+      <div class="num-card"><div class="v">1,791</div><div class="l">Aligned (25.5%)</div></div>
+      <div class="num-card"><div class="v">5,239</div><div class="l">Misaligned (74.5%)</div></div>
+      <div class="num-card"><div class="v">28</div><div class="l">SCI categories covered</div></div>
+    </div>
+
+    <div class="key-box" style="border-left-color:#f59e0b; background:#fffbeb;">
+      <strong>Heads up.</strong> Inputs only are released for now. Ground-truth diagnoses stay withheld until the <a href="https://www.codabench.org/competitions/16104/" target="_blank">ICML 2026 AI for Math Workshop &amp; Challenge 1</a> closes (June 15, AoE). The fully labeled split will accompany the paper after the challenge ends.
+    </div>
+
+    <h2 class="title" style="font-size:1.15rem; margin-top:1.5rem;">Schema</h2>
+    <p>Each sample is a JSON object:</p>
+<pre class="bibtex" style="font-size:0.82rem;">{
+  "idx":                "formalrx_1",
+  "header":             "import Mathlib\nopen Real Set",
+  "informal_statement": "...natural language problem...",
+  "formal_statement":   "theorem ... := by sorry",
+  "diagnosis": {
+    "aligned":             "Aligned" | "Misaligned",
+    "error_type":          "&lt;one of 28 SCI categories&gt;" | "N/A",
+    "error_location":      "&lt;minimal code snippet&gt;" | "N/A",
+    "corrected_statement": "&lt;complete corrected Lean 4 statement&gt;" | "N/A"
+  }
+}</pre>
+
+  </div>
+</section>
+
+<!-- KEY NUMBERS -->
+<section class="section" id="results" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <h2 class="title sticky-header">Main Results on FormalRx-Test</h2>
+
+    <div class="num-grid">
+      <div class="num-card"><div class="v">0.881</div><div class="l">Verdict F1</div></div>
+      <div class="num-card"><div class="v">0.709</div><div class="l">Categorization F1</div></div>
+      <div class="num-card"><div class="v">0.750</div><div class="l">Localization Acc.</div></div>
+      <div class="num-card"><div class="v">0.729</div><div class="l">Correction Acc.</div></div>
+    </div>
+    <p style="font-size:0.95rem; color:#555;">
+      On FormalRx-Test (7,030 samples), <b>FormalRx-8B</b> outperforms the strongest frontier baselines on every task: <b>+23.4&nbsp;pp</b> over the best baseline on 28-class error categorization, while staying competitive on verdict prediction where base models already perform well.
+    </p>
+
+    <p class="figure-caption" style="margin-top:1.5rem; margin-bottom:0.5rem;">
+      <span class="label">Table 1.</span> Main results on FormalRx-Test (7,030 samples). Underline marks the best baseline within each model category; bold + underline marks the overall best. <b>FormalRx-8B</b> attains the highest score on every task; the categorization gap (+23.4&nbsp;pp over the strongest baseline) reflects the value of taxonomy-grounded supervision.
+    </p>
+    <div style="overflow-x:auto;">
+    <table class="results">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Verdict (F1)</th>
+          <th>Categorization (F1)</th>
+          <th>Localization (Acc)</th>
+          <th>Correction (Acc)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-header"><td colspan="5">Frontier Models</td></tr>
+        <tr><td>DeepSeek-v3.2</td><td>0.858</td><td>0.259</td><td>0.407</td><td>0.592</td></tr>
+        <tr><td>GPT-4.1</td><td>0.810</td><td>0.269</td><td>0.609</td><td>0.579</td></tr>
+        <tr><td>GPT-5-mini</td><td>0.877</td><td>0.397</td><td>0.605</td><td>0.605</td></tr>
+        <tr><td>GPT-5.2</td><td>0.858</td><td>0.311</td><td>0.565</td><td>0.578</td></tr>
+        <tr><td>GPT-5.3-codex</td><td>0.853</td><td>0.380</td><td>0.685</td><td>0.688</td></tr>
+        <tr><td>Claude-Sonnet-4</td><td>0.869</td><td>0.376</td><td>0.582</td><td>0.595</td></tr>
+        <tr><td>Claude-Sonnet-4.6</td><td class="best">0.880</td><td class="best">0.475</td><td class="best">0.739</td><td class="best">0.714</td></tr>
+
+        <tr class="group-header"><td colspan="5">Instruct Models</td></tr>
+        <tr><td>Qwen3-8B</td><td>0.833</td><td class="best">0.155</td><td class="best">0.398</td><td class="best">0.458</td></tr>
+        <tr><td>Qwen3-4B</td><td class="best">0.854</td><td>0.119</td><td>0.331</td><td>0.354</td></tr>
+        <tr><td>Qwen3-1.7B</td><td>0.843</td><td>0.092</td><td>0.350</td><td>0.331</td></tr>
+
+        <tr class="group-header"><td colspan="5">Specialized Alignment Metrics</td></tr>
+        <tr><td>LeanScorer</td><td class="best">0.632</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>BLEU (best F1)</td><td>0.404</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+
+        <tr class="ours">
+          <td>FormalRx-8B (Ours)</td>
+          <td class="winner">0.881</td>
+          <td class="winner">0.709</td>
+          <td class="winner">0.750</td>
+          <td class="winner">0.729</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="title is-5" style="margin-top:2.5rem; font-size:1.15rem; border-bottom:2px solid #eee; padding-bottom:0.4rem; margin-bottom:1.2rem;">Scaling Across Model Sizes</h3>
+
+    <p class="figure-caption" style="margin-bottom:0.5rem;">
+      <span class="label">Table 2.</span> Performance across three FormalRx sizes. Verdict and categorization are well-learned even at 1.7B parameters, while the generative tasks (localization and correction) benefit most from scale: <b>FormalRx-8B</b> wins on both. The non-monotonic dip on categorization at 4B is consistent with the paper's observation that 28-class classification is sensitive to factors beyond raw scale.
+    </p>
+    <div style="overflow-x:auto;">
+    <table class="results">
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Verdict (F1)</th>
+          <th>Categorization (F1)</th>
+          <th>Localization (Acc)</th>
+          <th>Correction (Acc)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>FormalRx-1.7B</td><td>0.882</td><td class="best">0.725</td><td>0.739</td><td>0.708</td></tr>
+        <tr><td>FormalRx-4B</td><td class="best">0.889</td><td>0.508</td><td>0.713</td><td>0.654</td></tr>
+        <tr>
+          <td>FormalRx-8B</td>
+          <td>0.881</td>
+          <td>0.709</td>
+          <td class="best">0.750</td>
+          <td class="best">0.729</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- BIBTEX -->
+<section class="section" id="bibtex" style="padding-top:0;">
+  <div class="container is-max-widescreen content">
+    <h2 class="title sticky-header">BibTeX</h2>
+<pre class="bibtex">@inproceedings{wang2026formalrx,
+  title     = {FormalRx: Rectify and eXamine Semantic Failures in Autoformalization},
+  author    = {Wang, Haocheng and Huang, Baiyu and Wan, Yingjia and Zhu, Xiao
+               and Liu, Xiaoyang and Huang, Yinya and Guo, Zhijiang},
+  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
+  year      = {2026},
+}</pre>
+  </div>
+</section>
+
+<footer>
+  Template adapted from <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, which builds on <a href="https://nerfies.github.io/">Nerfies</a>.
+  &nbsp; &middot; &nbsp;
+  <a href="/">&larr; Back to homepage</a>
+</footer>
+
+
+<script>
+// scroll-spy: highlight TOC item matching current section
+(function() {
+  const links = document.querySelectorAll('.toc-sidebar a');
+  const map = new Map();
+  links.forEach(a => {
+    const id = a.getAttribute('href').slice(1);
+    const sec = document.getElementById(id);
+    if (sec) map.set(sec, a);
+  });
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      const link = map.get(e.target);
+      if (!link) return;
+      if (e.isIntersecting) {
+        links.forEach(l => l.parentElement.classList.remove('active'));
+        link.parentElement.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  map.forEach((_, sec) => obs.observe(sec));
+})();
+</script>
+</body>
+</html>
