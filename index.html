@@ -177,7 +177,7 @@
             display: flex;
             gap: 20px;
             align-items: stretch;
-            padding: 16px 0;
+            padding: 16px 0 8px 0;
             border-bottom: 1px solid #e8e8e8;
             margin-bottom: 0;
         }
@@ -218,12 +218,16 @@
         }
         .publication-bottom {
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: space-between;
             margin-top: auto;
         }
-        div.container.blog.main .publication-details > * {
+        div.container.blog.main .publication-details > *:not(.publication-bottom) {
             margin-top: 0 !important;
+            padding-top: 0 !important;
+        }
+        /* keep margin-top:auto so the row stays pinned to the divider */
+        div.container.blog.main .publication-details > .publication-bottom {
             padding-top: 0 !important;
         }
         .publication-details h2 {
@@ -416,14 +420,18 @@
             padding-top: 0 !important;
         }
         div.container.blog#first-content div.blog-title.no-cover .blog-intro {
-            padding: 3vh 0 !important;
+            padding: 3vh 40px !important;
             justify-content: flex-start !important;
             gap: 8px !important;
         }
 
-        /* Header links smaller */
-        .profile-bio .link, .profile-bio .link a, .profile-bio .link span {
-            font-size: 0.82em !important;
+        /* Header links: size set once on the row; children inherit so the
+           em factor is not applied twice */
+        .profile-bio .link {
+            font-size: 0.92em !important;
+        }
+        .profile-bio .link a, .profile-bio .link span {
+            font-size: 1em !important;
         }
 
         /* Desktop profile header layout */
@@ -446,19 +454,17 @@
             max-width: 1080px !important;
             margin-left: auto !important;
             margin-right: auto !important;
-            padding-left: 24px !important;
-            padding-right: 24px !important;
+            padding-left: 40px !important;
+            padding-right: 40px !important;
         }
         div.container.blog#first-content {
             padding-left: 0 !important;
             padding-right: 0 !important;
         }
         div.container.blog#first-content .blog-intro {
-            max-width: 1040px;
+            max-width: 1080px;
             margin-left: auto;
             margin-right: auto;
-            padding-left: 40px;
-            padding-right: 40px;
         }
 
         /* Fix education card: collapse p margins and padding inside the card */
@@ -476,6 +482,11 @@
         div.container.blog.main ul:not(.service-list) {
             list-style: disc;
             padding-left: 1.4em;
+        }
+        /* Prose bullets match the body text: Charter, justified like p.text */
+        div.container.blog.main ul:not(.service-list):not(.engagement-list) li {
+            font-family: "Charter", sans-serif;
+            text-align: justify;
         }
         div.container.blog.main ul:not(.service-list) li {
             font-size: 0.95em;
@@ -741,10 +752,10 @@
 
             /* Tighter container padding on mobile */
             div.container.blog.main {
-                padding-left: 16px !important;
-                padding-right: 16px !important;
+                padding-left: 20px !important;
+                padding-right: 20px !important;
             }
-            div.container.blog#first-content .blog-intro {
+            div.container.blog#first-content div.blog-title.no-cover .blog-intro {
                 padding-left: 20px !important;
                 padding-right: 20px !important;
             }
@@ -835,7 +846,7 @@
                         </div>
                         <div class="profile-bio">
                             <p class="abstract">
-                                I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning and autoformalization.
+                                I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning and verifiable code generation.
                             </p>
                             <p style="text-align: left; font-style: italic; color: #666; margin: 10px 0 10px 0; font-size: 0.95em; padding-left: 15px; border-left: 3px solid #0073b1;">
                                 日拱一卒 · Keep pounding the rock
@@ -844,7 +855,7 @@
                                 <a href="#contact"><i class="fas fa-envelope"></i> Email</a>
                                 <a href="https://github.com/hcWang942" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                                 <a href="https://scholar.google.com/citations?user=HLJz8yIAAAAJ&hl=en" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
-                                <a href="#" target="_blank"><i class="fas fa-file-pdf"></i> CV</a>
+                                <a href="assets/Wang_Haocheng_CV.pdf" target="_blank"><i class="fas fa-file-pdf"></i> CV</a>
                             </div>
                         </div>
                     </div>
@@ -867,7 +878,7 @@
             I am a direct doctoral student at <a href="https://dsa.hkust-gz.edu.cn/" target="_blank">DSA Thrust</a>, HKUST(GZ) supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>. Currently, I am a Visiting Researcher at ETH Zürich (<a href="https://inf.ethz.ch/" target="_blank">D-INFK</a>), working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a> on verifiable autoformalization and formal reasoning in Theoretical Computer Science. Previously, I was a Student Researcher at <a href="https://seed.bytedance.com/en/" target="_blank">ByteDance Seed</a> and <a href="https://huggingface.co/deepseek-ai" target="_blank">DeepSeek AI</a>.
         </p>
         <p class="text">
-            I graduated with a Bachelor's degree (Honours) in Mathematics and Applied Mathematics from Xiamen University in 2025. My undergraduate thesis focused on formalizing Auction Theory in Lean 4 with Mathlib4, supervised by <a href="https://www.majiajun.org/" target="_blank">Prof. Ma Jiajun</a>.
+            I graduated with a Bachelor's degree (Honours) in Mathematics and Applied Mathematics from Xiamen University in 2025. My undergraduate thesis focused on formalizing Auction Theory, supervised by <a href="https://www.majiajun.org/" target="_blank">Prof. Ma Jiajun</a>.
         </p>
 
         <!-- Research Interests -->
@@ -876,22 +887,21 @@
             My research focuses on:
         </p>
         <ul>
-            <li><strong>Formal theorem proving.</strong> Scaling LLM-based provers, with a focus on search, subgoal decomposition, and proof-checker feedback.</li>
-            <li><strong>Autoformalization.</strong> Translating natural language mathematics into formal statements, and diagnosing where the translation drifts from intent.</li>
-            <li><strong>Evaluation of mathematical reasoning.</strong> Benchmarks and diagnostic protocols that judge outputs by their mathematical content rather than surface-level matching.</li>
+            <li><strong>Formal theorem proving.</strong> Scaling LLM-based provers, with a focus on search, subgoal decomposition, and multi-dimensional feedback.</li>
+            <li><strong>Autoformalization.</strong> Translating natural language mathematics into formal statements, and diagnosing the semantic failures by their type, location, and correction.</li>
+            <li><strong>Verifiable code generation.</strong> Synthesizing implementations against formal specifications, so that a correctness theorem and its machine-checkable proof come with the code.</li>
         </ul>
 
         <!-- News -->
         <h2 class="section-title" id="news">News</h2>
-        <div style="max-height: 180px; overflow-y: auto; padding-right: 4px;">
+        <div style="max-height: 250px; overflow-y: auto; padding-right: 4px;">
         <table style="width:100%; border-collapse: collapse; font-size: 1em; line-height: 1.7;">
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Our <strong><a href="https://ai4math2026.github.io/" target="_blank">3rd AI4Math Workshop</a></strong> at ICML 2026 has been accepted!</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Started as a Ph.D. student at <strong>DSA Thrust, HKUST(GZ)</strong>, supervised by Prof. Zhijiang Guo.</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Dec. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Gave an invited talk on <em>Verifiable Theorem Proving with Large Language Models</em> at <strong>XJTLU</strong>.</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Gave an invited talk on <em>AI for Theoretical Computer Science in Lean</em> at <strong>ETHz</strong>.</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <strong>ETHz</strong> (D-INFK) as a Visiting Researcher, working with Prof. Rasmus Kyng and Dr. Sorrachai Yingchareonthawornchai.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Apr. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><a href="#formalrx">One paper</a> accepted at <strong>ICML 2026</strong>.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Co-organizing the <strong><a href="https://ai4math2026.github.io/" target="_blank">3rd AI4Math Workshop</a></strong> at ICML 2026 as Program Chair.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Started my Ph.D. at <strong>DSA Thrust, HKUST(GZ)</strong>, supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <strong>ETH Zürich</strong> (D-INFK) as a Visiting Researcher.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Apr. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><strong><a href="https://arxiv.org/abs/2504.21801" target="_blank">DeepSeek-Prover-V2</a></strong> and <strong><a href="https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench" target="_blank">ProverBench</a></strong> are released.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <strong>ByteDance Seed</strong> as a Student Researcher.</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Dec. 2024</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Gave an invited talk on <em>Frontier of Formal Theorem Proving with LLMs</em> at <strong>XMU</strong>.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 0 0; white-space:nowrap; line-height:1.5;">Jun. 2024</td><td style="vertical-align:top; line-height:1.5;">Joined <strong>DeepSeek AI</strong> as a Student Researcher.</td></tr>
         </table>
         </div>
@@ -900,13 +910,13 @@
         <h2 class="section-title" id="projects">Featured Projects</h2>
 
         <!-- FormalRx -->
-        <div class="publication-item">
+        <div class="publication-item" id="formalrx" style="scroll-margin-top: 70px;">
             <div class="publication-image">
                 <img src="assets/figures/formalrx-result.png" alt="FormalRx">
             </div>
             <div class="publication-details">
                 <h2><a href="/formalrx/" style="color:inherit; text-decoration:none;">FormalRx: Rectify and eXamine Semantic Failures in Autoformalization</a></h2>
-                <div class="publication-authors"><u>Haocheng Wang</u>*, Baiyu Huang*, Yingjia Wan*, Xiao Zhu, Xiaoyang Liu, Yinya Huang&dagger;, Zhijiang Guo&dagger;</div>
+                <div class="publication-authors"><u>Haocheng Wang</u>, Baiyu Huang, Yingjia Wan, Xiao Zhu, Xiaoyang Liu, Yinya Huang, Zhijiang Guo</div>
                 <p>A diagnostic evaluation framework for autoformalization with a 28-class SCI Error Taxonomy. FormalRx-8B jointly performs verdict, error categorization, localization, and correction in one forward pass.</p>
                 <div class="publication-bottom">
                     <div class="publication-buttons">
@@ -932,7 +942,7 @@
                     <div class="publication-buttons">
                         <a href="https://arxiv.org/abs/2504.21801" target="_blank" class="button icon">Paper</a>
                         <a href="https://huggingface.co/deepseek-ai/DeepSeek-Prover-V2-671B" target="_blank" class="button icon">Model</a>
-                        <a href="#" target="_blank" class="button icon">Code</a>
+                        <a href="https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench" target="_blank" class="button icon">Dataset</a>
                     </div>
                     <div class="publication-venue">ArXiv Preprint, 2025</div>
                 </div>
@@ -952,7 +962,7 @@
                     <div class="publication-buttons">
                         <a href="https://arxiv.org/abs/2408.08152" target="_blank" class="button icon">Paper</a>
                         <a href="https://openreview.net/forum?id=iOeoGeennC" target="_blank" class="button icon">OpenReview</a>
-                        <a href="#" target="_blank" class="button icon">Code</a>
+                        <a href="https://github.com/deepseek-ai/DeepSeek-Prover-V1.5" target="_blank" class="button icon">Code</a>
                     </div>
                     <div class="publication-venue">ICLR 2025</div>
                 </div>
@@ -971,7 +981,6 @@
                 <div class="publication-bottom">
                     <div class="publication-buttons">
                         <a href="https://arxiv.org/abs/2507.15225" target="_blank" class="button icon">Paper</a>
-                        <a href="#" target="_blank" class="button icon">Code</a>
                     </div>
                     <div class="publication-venue">ArXiv Preprint, 2025</div>
                 </div>
@@ -998,7 +1007,8 @@
                         <div class="experience-company">ETH Zürich</div>
                         <div class="experience-meta">Aug 2025 - Present · Zürich, Switzerland</div>
                         <ul>
-                            <li>Focusing on building Multi-gLLM Agent for formal reasoning in Theoretical Computer Science</li>
+                            <li>Focusing on building Multi-gLLM Agent for formal reasoning in TCS</li>
+                            <li>Working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1020,7 +1030,7 @@
                         <div class="experience-meta">Jan 2025 - Jul 2025 · Shanghai, China</div>
                         <ul>
                             <li>Built Scoring & Self-refinement agent pipeline for Natural Language Proof</li>
-                            <li>Proposed sketch-incorporated long Chain-of-Thought formal reasoning method</li>
+                            <li>Proposed sketch-incorporated long horizon CoT formal reasoning method</li>
                             <li>Led data initiatives for DeltaProver</li>
                         </ul>
                     </div>
@@ -1042,8 +1052,8 @@
                         <div class="experience-company">DeepSeek AI Co., Ltd.</div>
                         <div class="experience-meta">June 2024 - Sep 2024 · Beijing, China</div>
                         <ul>
-                            <li>Developed <a href="https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench" target="_blank">ProverBench</a>, a domain-categorized benchmark with 325 problems for evaluating LLM theorem proving</li>
                             <li>Contributed to DeepSeek-Prover-V1.5 and V2 model development</li>
+                            <li>Developed <a href="https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench" target="_blank">ProverBench</a>, a domain-categorized benchmark with 325 problems for evaluating LLM theorem proving</li>
                         </ul>
                     </div>
                 </div>
@@ -1065,7 +1075,7 @@
                     <strong>Bachelor of Science</strong> in Mathematics and Applied Mathematics (Honours)
                 </p>
                 <p class="text">
-                    <strong>Final Thesis:</strong> Formalization of Auction Theory using Lean 4 and Mathlib4<br>
+                    <strong>Final Thesis:</strong> Formalization of Auction Theory
                     <a href="https://github.com/hcWang942/FinalYearProject" target="_blank">[GitHub]</a>
                 </p>
             </div>
@@ -1103,6 +1113,7 @@
         </ul>
         <h3>Teaching Assistant</h3>
         <ul class="service-list">
+            <li><strong>Deep Learning (DSAA 2012)</strong> - HKUST(GZ) (Course, Fall 2026)</li>
             <li><strong><a href="https://sites.google.com/view/sorrachai/teaching?authuser=0" target="_blank">Formalizing Analysis of Algorithms</a></strong> - ETH Zürich (Course, Fall 2025)</li>
             <li><strong><a href="https://ins.sjtu.edu.cn/conferences/2694" target="_blank">AI4Math: Lean 4 and Formal Mathematics</a></strong> - Shanghai Jiaotong University (Jul. 2025)</li>
             <li><strong><a href="http://conference.bicmr.pku.edu.cn/meeting/index?id=119" target="_blank">AI For Math: Formalization Mathematics Theories and Proofs</a></strong> - BICMR, Peking University (Jun. 2024, Jan. 2024)</li>
@@ -1115,7 +1126,16 @@
         <ul class="engagement-list">
             <li class="engagement-item">
                 <div class="engagement-body">
-                    <div class="engagement-title">Verifiable Theorem Proving with Large Language Models</div>
+                    <div class="engagement-title"><a href="assets/slides/2026-07-23-zju-informal-formal-gap.pdf" target="_blank" style="color:#111;">Toward Bridging the Informal-Formal Gap</a></div>
+                </div>
+                <div class="engagement-meta">
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>Zhejiang University</span>
+                    <span class="engagement-date">Jul. 2026</span>
+                </div>
+            </li>
+            <li class="engagement-item">
+                <div class="engagement-body">
+                    <div class="engagement-title">Verifiable Theorem Proving with LLMs</div>
                 </div>
                 <div class="engagement-meta">
                     <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>XJTLU</span>
