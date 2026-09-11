@@ -78,6 +78,26 @@
             --fs-meta: 0.8125rem;   /* 13px  dates, orgs, authors, venues */
             --fs-chip: 0.75rem;     /* 12px  buttons, date pills */
         }
+        /* Step the scale up with the theme's own base size (16px at 769px,
+           18px at 1200px) so text keeps pace on laptop and desktop screens */
+        @media screen and (min-width: 769px) {
+            :root {
+                --fs-title: 1.0625rem;  /* 17px */
+                --fs-prose: 1rem;       /* 16px */
+                --fs-body: 0.9375rem;   /* 15px */
+                --fs-meta: 0.875rem;    /* 14px */
+                --fs-chip: 0.8125rem;   /* 13px */
+            }
+        }
+        @media screen and (min-width: 1200px) {
+            :root {
+                --fs-title: 1.125rem;   /* 18px */
+                --fs-prose: 1.0625rem;  /* 17px */
+                --fs-body: 1rem;        /* 16px */
+                --fs-meta: 0.9375rem;   /* 15px */
+                --fs-chip: 0.875rem;    /* 14px */
+            }
+        }
 
         /* Section headings in main content */
         .main h2.section-title {
@@ -506,6 +526,10 @@
             font-size: var(--fs-prose);
             line-height: 1.55;
         }
+        /* Alma mater and volunteering notes sit one step below body prose */
+        div.container.blog.main .education-note p.text {
+            font-size: var(--fs-body);
+        }
         #news ~ div table {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
@@ -515,8 +539,9 @@
         #news ~ div table td:first-child {
             font-size: var(--fs-meta);
         }
-        /* The theme gives every <a> a fixed px size; links must match their text */
-        div.container.blog.main a {
+        /* The theme gives every <a> a fixed px size; links must match their text.
+           Buttons are excluded: this selector outranks .publication-buttons .button.icon */
+        div.container.blog.main a:not(.button) {
             font-size: inherit;
         }
 
@@ -912,7 +937,7 @@
 
         <!-- News -->
         <h2 class="section-title" id="news">News</h2>
-        <div style="max-height: 250px; overflow-y: auto; padding-right: 4px;">
+        <div style="max-height: 300px; overflow-y: auto; padding-right: 4px;">
         <table style="width:100%; border-collapse: collapse; font-size: 1em; line-height: 1.7;">
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Apr. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><a href="#formalrx">One paper</a> accepted at <strong>ICML 2026</strong>.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Co-organizing the <strong><a href="https://ai4math2026.github.io/" target="_blank">3rd AI4Math Workshop</a></strong> at ICML 2026 as Program Chair.</td></tr>
@@ -1099,7 +1124,7 @@
             </div>
         </div>
 
-        <div style="color: #444; padding: 6px 14px; border-left: 3px solid #0073b1; margin: 10px 0 0 0; text-align: left;">
+        <div class="education-note" style="color: #444; padding: 6px 14px; border-left: 3px solid #0073b1; margin: 10px 0 0 0; text-align: left;">
             <p class="text" style="margin: 0 0 6px 0; text-align: left;">
                 I'm grateful that my alma mater shared moments from my non-linear journey through
                 <em>"Not Good at Math", Yet Pursuing a PhD</em>
