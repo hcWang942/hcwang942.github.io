@@ -69,6 +69,16 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         
+        /* Type scale. rem, not em: the theme sets different base sizes on
+           div (16px) and ul/li (18px), so em resolves differently per element. */
+        :root {
+            --fs-title: 1rem;       /* 16px  card and subsection titles */
+            --fs-prose: 0.9375rem;  /* 15px  paragraphs, research bullets */
+            --fs-body: 0.875rem;    /* 14px  card, list, and table text */
+            --fs-meta: 0.8125rem;   /* 13px  dates, orgs, authors, venues */
+            --fs-chip: 0.75rem;     /* 12px  buttons, date pills */
+        }
+
         /* Section headings in main content */
         .main h2.section-title {
             font-size: 1.5em;
@@ -96,7 +106,7 @@
         .main h2.section-title:hover::after { opacity: 1; }
 
         h3 {
-            font-size: 1em;
+            font-size: var(--fs-title);
             font-weight: 600;
             margin-top: -0.4em;
             margin-bottom: 0;
@@ -112,7 +122,7 @@
         }
 
         .service-list li {
-            font-size: 1em;
+            font-size: var(--fs-body);
             line-height: 1.7;
             margin-bottom: 0;
         }
@@ -120,7 +130,7 @@
         /* Education card styling */
         .education-card {
             background: white;
-            padding: 18px 22px;
+            padding: 14px 18px;
             margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.08);
@@ -132,8 +142,8 @@
 
         .education-logo {
             flex-shrink: 0;
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -141,8 +151,8 @@
         }
 
         .education-logo img {
-            width: 56px;
-            height: 56px;
+            width: 48px;
+            height: 48px;
             object-fit: contain;
         }
 
@@ -154,7 +164,7 @@
         .education-info h2 {
             margin: 0 0 3px 0 !important;
             padding-top: 0 !important;
-            font-size: 1.05em;
+            font-size: var(--fs-title);
             font-weight: 600;
             line-height: 1.25;
         }
@@ -162,10 +172,10 @@
             padding-top: 0 !important;
         }
 
-        .education-info .text {
+        div.container.blog.main .education-info p.text {
             margin: 0 0 3px 0;
-            line-height: 1.35;
-            font-size: 0.92em;
+            font-size: var(--fs-body);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
         .education-info p:last-child {
@@ -231,7 +241,7 @@
             padding-top: 0 !important;
         }
         .publication-details h2 {
-            font-size: 0.72em !important;
+            font-size: var(--fs-title) !important;
             font-weight: 700;
             color: #111;
             margin: 0 0 4px 0 !important;
@@ -250,14 +260,14 @@
             text-underline-offset: 3px;
         }
         .publication-authors {
-            font-size: 0.62em;
+            font-size: var(--fs-meta);
             color: #555;
             margin: 0 0 3px 0 !important;
             padding: 0 !important;
             line-height: 1.4;
         }
         .publication-venue {
-            font-size: 0.72em;
+            font-size: var(--fs-meta);
             font-weight: 700;
             color: #0073b1;
             margin: 0 !important;
@@ -265,7 +275,7 @@
             line-height: 1;
         }
         .publication-details p {
-            font-size: 0.72em;
+            font-size: var(--fs-body);
             color: #444;
             margin: 0 0 6px 0;
             line-height: 1.5;
@@ -275,7 +285,8 @@
         }
         .publication-buttons .button.icon {
             display: inline-block;
-            font-size: 0.75em;
+            font-size: var(--fs-chip);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             font-weight: 600;
             color: #333;
             border: 1px solid #bbb;
@@ -299,7 +310,7 @@
         .experience-timeline {
             position: relative;
             padding-left: 40px;
-            margin: 40px 0;
+            margin: 16px 0;
         }
         
         .experience-timeline::before {
@@ -314,13 +325,13 @@
         
         .experience-item {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
         
         .experience-marker {
             position: absolute;
             left: -40px;
-            top: 15px;
+            top: 12px;
         }
         
         .experience-dot {
@@ -339,26 +350,26 @@
         
         .experience-content {
             background: white;
-            padding: 16px 20px;
+            padding: 12px 16px;
             border-radius: 8px;
             box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.08);
             display: flex;
-            gap: 15px;
+            gap: 12px;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         
         .experience-logo {
             flex-shrink: 0;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: flex-start;
             justify-content: center;
         }
         
         .experience-logo img {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
         }
         
@@ -368,7 +379,7 @@
         }
         
         .experience-title {
-            font-size: 1em;
+            font-size: var(--fs-title);
             font-weight: 600;
             color: #000;
             margin: 0 0 2px 0;
@@ -376,16 +387,16 @@
         }
         
         .experience-company {
-            font-size: 0.9em;
+            font-size: var(--fs-meta);
             color: #666;
             margin: 0 0 2px 0;
             line-height: 1.3;
         }
         
         .experience-meta {
-            font-size: 0.85em;
+            font-size: var(--fs-meta);
             color: #666;
-            margin: 0 0 8px 0;
+            margin: 0 0 4px 0;
             line-height: 1.3;
         }
         
@@ -397,14 +408,14 @@
         }
         
         .experience-content ul {
-            margin: 10px 0 0 0;
+            margin: 4px 0 0 0;
             padding-left: 20px;
         }
         
         .experience-content li {
-            margin-bottom: 4px;
-            font-size: 0.9em;
-            line-height: 1.4;
+            margin-bottom: 2px;
+            font-size: var(--fs-body);
+            line-height: 1.5;
             color: #000;
         }
         
@@ -483,19 +494,30 @@
             list-style: disc;
             padding-left: 1.4em;
         }
-        /* Prose bullets match the body text: Charter, justified like p.text */
-        div.container.blog.main ul:not(.service-list):not(.engagement-list) li {
+        /* Research bullets are prose: Charter, justified like p.text */
+        div.container.blog.main .research-list li {
             font-family: "Charter", sans-serif;
             text-align: justify;
-        }
-        div.container.blog.main ul:not(.service-list) li {
-            font-size: 0.95em;
+            font-size: var(--fs-prose);
             line-height: 1.55;
             margin-bottom: 6px;
         }
         div.container.blog.main p.text {
-            font-size: 0.95em;
+            font-size: var(--fs-prose);
             line-height: 1.55;
+        }
+        #news ~ div table {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        #news ~ div table td {
+            font-size: var(--fs-body);
+        }
+        #news ~ div table td:first-child {
+            font-size: var(--fs-meta);
+        }
+        /* The theme gives every <a> a fixed px size; links must match their text */
+        div.container.blog.main a {
+            font-size: inherit;
         }
 
         /* Reduce About Me paragraph spacing */
@@ -559,7 +581,7 @@
             min-width: 0;
         }
         .contact-info p {
-            font-size: 0.9em;
+            font-size: var(--fs-body);
             text-align: left !important;
             line-height: 1.6;
             margin: 0 0 4px 0;
@@ -605,7 +627,7 @@
             min-width: 0;
         }
         .engagement-title {
-            font-size: 0.95em;
+            font-size: var(--fs-body);
             font-weight: 400;
             color: #111;
             line-height: 1.4;
@@ -619,7 +641,7 @@
             margin-top: 2px;
         }
         .engagement-venue {
-            font-size: 0.85em;
+            font-size: var(--fs-meta);
             color: #666;
             line-height: 1.4;
             white-space: nowrap;
@@ -629,7 +651,7 @@
             color: #999;
         }
         .engagement-date {
-            font-size: 0.75em;
+            font-size: var(--fs-chip);
             font-weight: 600;
             color: #0073b1;
             background: #eaf2f8;
@@ -638,9 +660,12 @@
             white-space: nowrap;
         }
         @media screen and (max-width: 700px) {
-            .engagement-item { flex-direction: column; align-items: flex-start; gap: 4px; }
-            .engagement-meta { margin-top: 0; }
-            .engagement-venue { white-space: normal; }
+            /* Title and date share the first line; venue drops below */
+            .engagement-item { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: start; }
+            .engagement-meta { display: contents; }
+            .engagement-body { grid-column: 1; grid-row: 1; }
+            .engagement-date { grid-column: 2; grid-row: 1; }
+            .engagement-venue { grid-column: 1; grid-row: 2; white-space: normal; }
         }
 
         /* Mobile responsive fixes */
@@ -694,8 +719,12 @@
                 max-width: 100% !important;
             }
             
+            .publication-authors {
+                font-size: var(--fs-chip);
+            }
+
             .publication-buttons .button.icon {
-                font-size: 0.75em !important;
+                font-size: var(--fs-chip) !important;
                 padding: 0.45em 0.75em !important;
             }
             
@@ -760,14 +789,10 @@
                 padding-right: 20px !important;
             }
 
-            /* News table: smaller date column, smaller font, tighter */
+            /* News table: narrower date column */
             #news + div table td:first-child,
             #news ~ div table td:first-child {
                 width: 80px !important;
-                font-size: 0.85em;
-            }
-            #news ~ div table td {
-                font-size: 0.92em;
             }
 
             /* Section title slightly smaller */
@@ -782,18 +807,11 @@
                 line-height: 1.55 !important;
             }
 
-            /* Engagements: tighter spacing, smaller venue */
+            /* Engagements: tighter spacing */
             .engagement-item {
                 padding: 8px 0;
             }
-            .engagement-title {
-                font-size: 0.9em;
-            }
-            .engagement-venue {
-                font-size: 0.8em;
-            }
             .engagement-date {
-                font-size: 0.7em;
                 padding: 2px 8px;
             }
 
@@ -846,7 +864,7 @@
                         </div>
                         <div class="profile-bio">
                             <p class="abstract">
-                                I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning and verifiable code generation.
+                                I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning, autoformalization, and algorithm verification.
                             </p>
                             <p style="text-align: left; font-style: italic; color: #666; margin: 10px 0 10px 0; font-size: 0.95em; padding-left: 15px; border-left: 3px solid #0073b1;">
                                 日拱一卒 · Keep pounding the rock
@@ -875,10 +893,10 @@
         <!-- About Me Section -->
         <h2 class="section-title" id="about">About Me</h2>
         <p class="text">
-            I am a direct doctoral student at <a href="https://dsa.hkust-gz.edu.cn/" target="_blank">DSA Thrust</a>, HKUST(GZ) supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>. Currently, I am a Visiting Researcher at ETH Zürich (<a href="https://inf.ethz.ch/" target="_blank">D-INFK</a>), working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a> on verifiable autoformalization and formal reasoning in Theoretical Computer Science. Previously, I was a Student Researcher at <a href="https://seed.bytedance.com/en/" target="_blank">ByteDance Seed</a> and <a href="https://huggingface.co/deepseek-ai" target="_blank">DeepSeek AI</a>.
+            I am a direct doctoral student at <a href="https://dsa.hkust-gz.edu.cn/" target="_blank">DSA Thrust</a>, HKUST(GZ) supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>. Currently, I am a Visiting Researcher at ETH Zürich (<a href="https://inf.ethz.ch/" target="_blank">D-INFK</a>), working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a> on algorithm verification and formal reasoning in Theoretical Computer Science.
         </p>
         <p class="text">
-            I graduated with a Bachelor's degree (Honours) in Mathematics and Applied Mathematics from Xiamen University in 2025. My undergraduate thesis focused on formalizing Auction Theory, supervised by <a href="https://www.majiajun.org/" target="_blank">Prof. Ma Jiajun</a>.
+            I graduated with a Bachelor's degree (Honours) in Mathematics and Applied Mathematics from Xiamen University in 2025. My undergraduate thesis focused on formalizing Auction Theory, supervised by <a href="https://www.majiajun.org/" target="_blank">Prof. Ma Jiajun</a>. I was also a Student Researcher at <a href="https://seed.bytedance.com/en/" target="_blank">ByteDance Seed</a> and <a href="https://huggingface.co/deepseek-ai" target="_blank">DeepSeek AI</a>.
         </p>
 
         <!-- Research Interests -->
@@ -886,7 +904,7 @@
         <p class="text">
             My research focuses on:
         </p>
-        <ul>
+        <ul class="research-list">
             <li><strong>Formal theorem proving.</strong> Scaling LLM-based provers, with a focus on search, subgoal decomposition, and multi-dimensional feedback.</li>
             <li><strong>Autoformalization.</strong> Translating natural language mathematics into formal statements, and diagnosing the semantic failures by their type, location, and correction.</li>
             <li><strong>Verifiable code generation.</strong> Synthesizing implementations against formal specifications, so that a correctness theorem and its machine-checkable proof come with the code.</li>
@@ -1007,8 +1025,8 @@
                         <div class="experience-company">ETH Zürich</div>
                         <div class="experience-meta">Aug 2025 - Present · Zürich, Switzerland</div>
                         <ul>
-                            <li>Focusing on building Multi-gLLM Agent for formal reasoning in TCS</li>
-                            <li>Working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a></li>
+                            <li>Auditable algorithm verification at scale</li>
+                            <li>Multi-agent framework for formal reasoning in TCS</li>
                         </ul>
                     </div>
                 </div>
@@ -1070,7 +1088,7 @@
             </div>
             <div class="education-info">
                 <h2>Xiamen University</h2>
-                <p class="text" style="color: #666; font-size: 0.9em;">Sep 2020 - Jun 2025</p>
+                <p class="text" style="color: #666; font-size: var(--fs-meta);">Sep 2020 - Jun 2025</p>
                 <p class="text">
                     <strong>Bachelor of Science</strong> in Mathematics and Applied Mathematics (Honours)
                 </p>
@@ -1114,7 +1132,7 @@
         <h3>Teaching Assistant</h3>
         <ul class="service-list">
             <li><strong>Deep Learning (DSAA 2012)</strong> - HKUST(GZ) (Course, Fall 2026)</li>
-            <li><strong><a href="https://sites.google.com/view/sorrachai/teaching?authuser=0" target="_blank">Formalizing Analysis of Algorithms</a></strong> - ETH Zürich (Course, Fall 2025)</li>
+            <li><strong><a href="https://sites.google.com/view/sorrachai/teaching/formalizing-algo-2025" target="_blank">Formalizing Analysis of Algorithms</a></strong> - ETH Zürich (Course, Fall 2025)</li>
             <li><strong><a href="https://ins.sjtu.edu.cn/conferences/2694" target="_blank">AI4Math: Lean 4 and Formal Mathematics</a></strong> - Shanghai Jiaotong University (Jul. 2025)</li>
             <li><strong><a href="http://conference.bicmr.pku.edu.cn/meeting/index?id=119" target="_blank">AI For Math: Formalization Mathematics Theories and Proofs</a></strong> - BICMR, Peking University (Jun. 2024, Jan. 2024)</li>
         </ul>
@@ -1169,7 +1187,7 @@
                     <div class="engagement-title"><a href="https://leanprover-community.github.io/itp-2025-lean-workshop/" target="_blank" style="color:#111;">ITP 2025 Lean Workshop</a></div>
                 </div>
                 <div class="engagement-meta">
-                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>Reykjavic University</span>
+                    <span class="engagement-venue"><i class="fas fa-map-marker-alt"></i>Reykjavik University</span>
                     <span class="engagement-date">Oct. 2025</span>
                 </div>
             </li>
