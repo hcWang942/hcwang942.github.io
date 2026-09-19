@@ -482,7 +482,7 @@
         /* Override base theme's aggressive vw-based padding */
         /* Max-width + auto margin to center content on all screen sizes */
         div.container.blog.main {
-            max-width: 1080px !important;
+            max-width: 1000px !important;
             margin-left: auto !important;
             margin-right: auto !important;
             padding-left: 40px !important;
@@ -493,7 +493,7 @@
             padding-right: 0 !important;
         }
         div.container.blog#first-content .blog-intro {
-            max-width: 1080px;
+            max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -539,6 +539,26 @@
         #news ~ div table td:first-child {
             font-size: var(--fs-meta);
         }
+        /* Inline org wordmarks in News, sized to the text line */
+        /* The theme makes every img a padded block; undo that here */
+        div.container.blog.main img.news-logo {
+            display: inline-block;
+            height: 1.05em;
+            width: auto;
+            padding: 0 !important;
+            vertical-align: -0.2em;
+            margin: 0 0.1em;
+        }
+        /* Wordmark with no descender: letters sit on the text baseline at cap height */
+        div.container.blog.main img.news-logo--eth {
+            height: 0.82em;
+            vertical-align: -0.04em;
+        }
+        /* Icon: roughly as tall as the capitals, centred on them */
+        div.container.blog.main img.news-logo--icon {
+            height: 1.15em;
+            vertical-align: -0.22em;
+        }
         /* The theme gives every <a> a fixed px size; links must match their text.
            Buttons are excluded: this selector outranks .publication-buttons .button.icon */
         div.container.blog.main a:not(.button) {
@@ -570,7 +590,7 @@
             list-style: none !important;
             padding: 0 !important;
             margin: 0 auto !important;
-            max-width: 1080px;
+            max-width: 1000px;
             gap: 0;
             justify-content: center;
         }
@@ -885,11 +905,11 @@
                     <div class="profile-left">
                         <div class="profile-name">
                             <h1 class="title">Haocheng Wang (王浩丞)</h1>
-                            <p class="author">PhD @ HKUST(GZ) | Visiting Researcher @ ETH Zürich</p>
+                            <p class="author">PhD @ HKUST(GZ) | Visiting PhD @ ETH Zürich</p>
                         </div>
                         <div class="profile-bio">
                             <p class="abstract">
-                                I am a PhD student at HKUST(GZ) and a Visiting Researcher at ETH Zürich, focusing on formal mathematical reasoning, autoformalization, and algorithm verification.
+                                I am a PhD student at HKUST(GZ) and a Visiting PhD Student at ETH Zürich, focusing on formal mathematical reasoning, autoformalization, and algorithm verification.
                             </p>
                             <p style="text-align: left; font-style: italic; color: #666; margin: 10px 0 10px 0; font-size: 0.95em; padding-left: 15px; border-left: 3px solid #0073b1;">
                                 日拱一卒 · Keep pounding the rock
@@ -918,7 +938,7 @@
         <!-- About Me Section -->
         <h2 class="section-title" id="about">About Me</h2>
         <p class="text">
-            I am a direct doctoral student at <a href="https://dsa.hkust-gz.edu.cn/" target="_blank">DSA Thrust</a>, HKUST(GZ) supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>. Currently, I am a Visiting Researcher at ETH Zürich (<a href="https://inf.ethz.ch/" target="_blank">D-INFK</a>), working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a> on algorithm verification and formal reasoning in Theoretical Computer Science.
+            I am a direct doctoral student at <a href="https://dsa.hkust-gz.edu.cn/" target="_blank">DSA Thrust</a>, HKUST(GZ) supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>. Currently, I am a Visiting PhD Student at ETH Zürich (<a href="https://inf.ethz.ch/" target="_blank">D-INFK</a>), working with <a href="https://rasmuskyng.com/" target="_blank">Prof. Rasmus Kyng</a> and <a href="https://sites.google.com/view/sorrachai" target="_blank">Dr. Sorrachai Yingchareonthawornchai</a> on algorithm verification and formal reasoning in Theoretical Computer Science.
         </p>
         <p class="text">
             I graduated with a Bachelor's degree (Honours) in Mathematics and Applied Mathematics from Xiamen University in 2025. My undergraduate thesis focused on formalizing Auction Theory, supervised by <a href="https://www.majiajun.org/" target="_blank">Prof. Ma Jiajun</a>. I was also a Student Researcher at <a href="https://seed.bytedance.com/en/" target="_blank">ByteDance Seed</a> and <a href="https://huggingface.co/deepseek-ai" target="_blank">DeepSeek AI</a>.
@@ -930,9 +950,9 @@
             My research focuses on:
         </p>
         <ul class="research-list">
-            <li><strong>Formal theorem proving.</strong> Scaling LLM-based provers, with a focus on search, subgoal decomposition, and multi-dimensional feedback.</li>
             <li><strong>Autoformalization.</strong> Translating natural language mathematics into formal statements, and diagnosing the semantic failures by their type, location, and correction.</li>
             <li><strong>Verifiable code generation.</strong> Synthesizing implementations against formal specifications, so that a correctness theorem and its machine-checkable proof come with the code.</li>
+            <li><strong>Formal theorem proving.</strong> Scaling LLM provers with search, decomposition, and multi-dimensional feedback.</li>
         </ul>
 
         <!-- News -->
@@ -942,10 +962,10 @@
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Apr. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><a href="#formalrx">One paper</a> accepted at <strong>ICML 2026</strong>.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Co-organizing the <strong><a href="https://ai4math2026.github.io/" target="_blank">3rd AI4Math Workshop</a></strong> at ICML 2026 as Program Chair.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Started my Ph.D. at <strong>DSA Thrust, HKUST(GZ)</strong>, supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>.</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <strong>ETH Zürich</strong> (D-INFK) as a Visiting Researcher.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Started visiting <img class="news-logo news-logo--eth" src="assets/figures/news-eth.png" alt="ETH Zürich"> (D-INFK).</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Apr. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><strong><a href="https://arxiv.org/abs/2504.21801" target="_blank">DeepSeek-Prover-V2</a></strong> and <strong><a href="https://huggingface.co/datasets/deepseek-ai/DeepSeek-ProverBench" target="_blank">ProverBench</a></strong> are released.</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <strong>ByteDance Seed</strong> as a Student Researcher.</td></tr>
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 0 0; white-space:nowrap; line-height:1.5;">Jun. 2024</td><td style="vertical-align:top; line-height:1.5;">Joined <strong>DeepSeek AI</strong> as a Student Researcher.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Joined <img class="news-logo" src="assets/figures/news-bytedance.png" alt="ByteDance Seed"> as a Student Researcher.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 0 0; white-space:nowrap; line-height:1.5;">Jun. 2024</td><td style="vertical-align:top; line-height:1.5;">Joined <strong>DeepSeek AI</strong> <img class="news-logo news-logo--icon" src="assets/figures/news-deepseek.svg" alt=""> as a Student Researcher.</td></tr>
         </table>
         </div>
 
@@ -1046,7 +1066,7 @@
                         <img src="assets/figures/eth-logo.png" alt="ETH Zürich">
                     </div>
                     <div class="experience-info">
-                        <div class="experience-title">Scientific Assistant I</div>
+                        <div class="experience-title">Visiting PhD Student</div>
                         <div class="experience-company">ETH Zürich</div>
                         <div class="experience-meta">Aug 2025 - Present · Zürich, Switzerland</div>
                         <ul>
@@ -1109,6 +1129,19 @@
         
         <div class="education-card">
             <div class="education-logo">
+                <img src="assets/figures/hkustgz-logo.png" alt="HKUST(GZ)">
+            </div>
+            <div class="education-info">
+                <h2>Hong Kong University of Science and Technology (Guangzhou)</h2>
+                <p class="text" style="color: #666; font-size: var(--fs-meta);">Jan 2026 - Present</p>
+                <p class="text">
+                    <strong>Ph.D.</strong> in <a href="https://dsa.hkust-gz.edu.cn/" target="_blank">Data Science and Analytics</a>, supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="education-card">
+            <div class="education-logo">
                 <img src="assets/figures/xmu-logo.png" alt="Xiamen University">
             </div>
             <div class="education-info">
@@ -1132,7 +1165,7 @@
                 <a href="https://mp.weixin.qq.com/s/2_bN-l5NYPow-IyoEkIQLA" target="_blank">中文</a>].
             </p>
             <p class="text" style="margin: 0; text-align: left;">
-                Beyond academics, I care deeply about volunteering. My story <em>on the frontline of the Zhengzhou 7·20 flood relief efforts</em> was also shared
+                Beyond academics, I care deeply about volunteering. My story <em>on the frontline of the Zhengzhou 7·20 flood relief</em> was also shared
                 [<a href="https://mp.weixin.qq.com/s/T_CusXxooXHkb8JVUbKYXQ" target="_blank">中文</a>].
             </p>
         </div>
