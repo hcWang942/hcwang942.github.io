@@ -219,23 +219,46 @@
             flex: 0 0 35%;
             max-width: 35%;
         }
+        /* Hover zoom stays sharp: the image is laid out at 2x and shown at half
+           size, so the zoomed state is its native raster rather than an upscaled
+           1x bitmap (scale(2) on a 1x image blurs, worst in Safari).
+           --r is the image's width/height; the negative margin gives back the
+           extra layout height, since vertical % margins resolve against width. */
         .publication-image img {
-            width: 100%;
+            width: 200%;
+            max-width: none;
             height: auto;
             display: block;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: calc(-100% / var(--r));
             position: relative;
             z-index: 1;
+            transform-origin: 0 0;
+            transform: scale(0.5);
             transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
                         box-shadow 0.45s ease,
                         border-color 0.3s ease;
         }
+        /* Grow rightwards over the text, centred vertically; growing about the
+           centre pushed the left half off-screen on laptop widths */
         .publication-image img:hover {
-            transform: scale(2);
+            transform: translate(0, -25%) scale(1);
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
             border-color: #0073b1;
             z-index: 50;
+        }
+        /* Touch screens and stacked cards: plain image, no zoom */
+        @media (hover: none), screen and (max-width: 768px) {
+            .publication-image img,
+            .publication-image img:hover {
+                width: 100%;
+                margin-bottom: 0;
+                border-width: 1px;
+                border-radius: 4px;
+                transform: none;
+                box-shadow: none;
+            }
         }
 
         .publication-details {
@@ -302,6 +325,33 @@
         }
         .publication-buttons {
             margin-top: 0;
+        }
+        /* Sits on the section rule, right-aligned with the heading */
+        /* Specificity must beat "div.container.blog.main a:not(.button)",
+           otherwise the link inherits the h2's 1.5em size */
+        div.container.blog.main h2 a.section-more {
+            position: absolute;
+            right: 0;
+            bottom: 8px;
+            font-size: var(--fs-meta);
+            font-weight: 600;
+            color: #0073b1;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .section-more:hover {
+            text-decoration: underline;
+        }
+        /* Narrow screens: drop below the heading instead of overlapping it */
+        @media screen and (max-width: 700px) {
+            div.container.blog.main h2 a.section-more {
+                position: static;
+                display: block;
+                text-align: right;
+                font-size: var(--fs-chip);
+                font-weight: 500;
+                margin-top: 2px;
+            }
         }
         .publication-buttons .button.icon {
             display: inline-block;
@@ -951,7 +1001,7 @@
         </p>
         <ul class="research-list">
             <li><strong>Autoformalization.</strong> Translating natural language mathematics into formal statements, and diagnosing the semantic failures by their type, location, and correction.</li>
-            <li><strong>Verifiable code generation.</strong> Synthesizing implementations against formal specifications, so that a correctness theorem and its machine-checkable proof come with the code.</li>
+            <li><strong>Verifiable code generation.</strong> Generating formal program specifications that test cases can check by execution, together with implementations whose correctness theorems have machine-checkable proofs.</li>
             <li><strong>Formal theorem proving.</strong> Scaling LLM provers with search, decomposition, and multi-dimensional feedback.</li>
         </ul>
 
@@ -959,7 +1009,8 @@
         <h2 class="section-title" id="news">News</h2>
         <div style="max-height: 300px; overflow-y: auto; padding-right: 4px;">
         <table style="width:100%; border-collapse: collapse; font-size: 1em; line-height: 1.7;">
-            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Apr. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><a href="#formalrx">One paper</a> accepted at <strong>ICML 2026</strong>.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Nov. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><strong><a href="https://arxiv.org/abs/2611.21421" target="_blank">AuXSpec</a></strong>, the strongest open model for formal specification, is released.</td></tr>
+            <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Apr. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;"><a href="#formalrx">FormalRx</a> is accepted to <strong>ICML 2026</strong>.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Mar. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Co-organizing the <strong><a href="https://ai4math2026.github.io/" target="_blank">3rd AI4Math Workshop</a></strong> at ICML 2026 as Program Chair.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Jan. 2026</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Started my Ph.D. at <strong>DSA Thrust, HKUST(GZ)</strong>, supervised by Prof. <a href="https://cartus.github.io/" target="_blank">Zhijiang Guo</a>.</td></tr>
             <tr><td style="width:100px; color:#888; vertical-align:top; padding: 0 12px 3px 0; white-space:nowrap; line-height:1.5;">Aug. 2025</td><td style="vertical-align:top; padding-bottom: 3px; line-height:1.5;">Started visiting <img class="news-logo news-logo--eth" src="assets/figures/news-eth.png" alt="ETH Zürich"> (D-INFK).</td></tr>
@@ -970,12 +1021,33 @@
         </div>
 
         <!-- Selected Publications -->
-        <h2 class="section-title" id="projects">Featured Projects</h2>
+        <h2 class="section-title" id="projects">Featured Projects<a class="section-more" href="https://scholar.google.com/citations?user=HLJz8yIAAAAJ&amp;hl=en" target="_blank">See the full list on Google Scholar</a></h2>
+
+        <!-- AuXSpec -->
+        <div class="publication-item" id="auxspec" style="scroll-margin-top: 70px;">
+            <div class="publication-image">
+                <img src="assets/figures/auxspec-result.png" style="--r: 1.7998;" alt="AuXSpec">
+            </div>
+            <div class="publication-details">
+                <h2><a href="https://arxiv.org/abs/2611.21421" target="_blank" style="color:inherit; text-decoration:none;">AuXSpec: Learning to Autoformalize Program Specifications via Executable Postconditions</a></h2>
+                <div class="publication-authors"><u>Haocheng Wang</u>, Weixuan Yuan, Florian H&uuml;bler, Yinya Huang, Zhijiang Guo, Sorrachai Yingchareonthawornchai, Rasmus Kyng</div>
+                <p>A Lean framework pairing declarative postconditions with executable counterparts, so test cases can reward specification models. Trained with this execution-based reward, AuXSpec-27B-RL outperforms all frontier models on SpecGen.</p>
+                <div class="publication-bottom">
+                    <div class="publication-buttons">
+                        <a href="https://arxiv.org/abs/2611.21421" target="_blank" class="button icon">Paper</a>
+                        <a href="https://auxspec.org" target="_blank" class="button icon">Website</a>
+                        <a href="https://huggingface.co/collections/eth-algopt/auxspec" target="_blank" class="button icon">Models</a>
+                        <a href="https://huggingface.co/datasets/eth-algopt/AuXSpec" target="_blank" class="button icon">Dataset</a>
+                    </div>
+                    <div class="publication-venue">ArXiv Preprint, 2026</div>
+                </div>
+            </div>
+        </div>
 
         <!-- FormalRx -->
         <div class="publication-item" id="formalrx" style="scroll-margin-top: 70px;">
             <div class="publication-image">
-                <img src="assets/figures/formalrx-result.png" alt="FormalRx">
+                <img src="assets/figures/formalrx-result.png" style="--r: 2.8837;" alt="FormalRx">
             </div>
             <div class="publication-details">
                 <h2><a href="/formalrx/" style="color:inherit; text-decoration:none;">FormalRx: Rectify and eXamine Semantic Failures in Autoformalization</a></h2>
@@ -995,11 +1067,11 @@
         <!-- Publication 1 -->
         <div class="publication-item">
             <div class="publication-image">
-                <img src="assets/figures/deepseek-prover-v2-result.png" alt="DeepSeek-Prover-V2">
+                <img src="assets/figures/deepseek-prover-v2-result.png" style="--r: 2.3207;" alt="DeepSeek-Prover-V2">
             </div>
             <div class="publication-details">
                 <h2>DeepSeek-Prover-V2: Advancing Formal Mathematical Reasoning via Reinforcement Learning for Subgoal Decomposition</h2>
-                <div class="publication-authors">Z.Z. Ren, Zhihong Shao, Junxiao Song, Huajian Xin, <u>Haocheng Wang</u>, Wanjia Zhao, Liyue Zhang, Zhe Fu, Qihao Zhu, Dejian Yang, Z.F. Wu, Zhibin Gou, Shirong Ma, Hongxuan Tang, Yuxuan Liu, Wenjun Gao, Daya Guo, Chong Ruan</div>
+                <div class="publication-authors">Z.Z. Ren, Zhihong Shao, Junxiao Song, Huajian Xin, <u>Haocheng Wang</u>, Wanjia Zhao, Liyue Zhang, Zhe Fu, Qihao Zhu, Dejian Yang, Z.F. Wu, Zhibin Gou, Shirong Ma, et al.</div>
                 <p>671B-sized model achieving SOTA on miniF2F (88.9%) and PutnamBench (47/658) via RL with subgoal decomposition.</p>
                 <div class="publication-bottom">
                     <div class="publication-buttons">
@@ -1015,11 +1087,11 @@
         <!-- Publication 2 -->
         <div class="publication-item">
             <div class="publication-image">
-                <img src="assets/figures/deepseek-prover-v1.5-result.png" alt="DeepSeek-Prover-V1.5">
+                <img src="assets/figures/deepseek-prover-v1.5-result.png" style="--r: 2.0462;" alt="DeepSeek-Prover-V1.5">
             </div>
             <div class="publication-details">
                 <h2>DeepSeek-Prover-V1.5: Harnessing Proof Assistant Feedback for Reinforcement Learning and Monte-Carlo Tree Search</h2>
-                <div class="publication-authors">Huajian Xin, Z.Z. Ren, Junxiao Song, Zhihong Shao, Wanjia Zhao, <u>Haocheng Wang</u>, Bo Liu, Liyue Zhang, Xuan Lu, Qiushi Du, Wenjun Gao, Qihao Zhu, Dejian Yang, Zhibin Gou, Z.F. Wu, Fuli Luo, Chong Ruan</div>
+                <div class="publication-authors">Huajian Xin, Z.Z. Ren, Junxiao Song, Zhihong Shao, Wanjia Zhao, <u>Haocheng Wang</u>, Bo Liu, Liyue Zhang, Xuan Lu, Qiushi Du, Wenjun Gao, Qihao Zhu, Dejian Yang, Zhibin Gou, et al.</div>
                 <p>Hybrid approach combining LLMs and Monte-Carlo tree search. SOTA on miniF2F (63.5%) and ProofNet (25.3%).</p>
                 <div class="publication-bottom">
                     <div class="publication-buttons">
@@ -1035,7 +1107,7 @@
         <!-- Publication 3 -->
         <div class="publication-item">
             <div class="publication-image">
-                <img src="assets/figures/formal-math-result.png" alt="Formal Math">
+                <img src="assets/figures/formal-math-result.png" style="--r: 1.7999;" alt="Formal Math">
             </div>
             <div class="publication-details">
                 <h2>Solving Formal Math Problems by Decomposition and Iterative Reflection</h2>
